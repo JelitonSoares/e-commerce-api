@@ -1,10 +1,12 @@
 package com.zex.ecommerce.models.order;
 
 import com.zex.ecommerce.models.client.Client;
+import com.zex.ecommerce.models.ordereditens.OrderedItens;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Entity(name = "order")
@@ -24,4 +26,7 @@ public class Order {
 
     @Column(name = "order_total_value")
     private BigDecimal totalValue;
+
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    private List<OrderedItens> orderedItensList;
 }
