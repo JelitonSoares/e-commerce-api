@@ -1,10 +1,12 @@
 package com.zex.ecommerce.models.product;
 
+import com.zex.ecommerce.models.ordereditens.OrderedItens;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Entity(name = "product")
@@ -43,4 +45,8 @@ public class Product {
 
     @Column(name = "product_register_date")
     private LocalDate registerDate;
+
+
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    private List<OrderedItens> orderedItensList;
 }
