@@ -1,8 +1,10 @@
 package com.zex.ecommerce.models.client;
 
+import com.zex.ecommerce.models.order.Order;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @Entity(name = "client")
@@ -27,4 +29,8 @@ public class Client {
 
     @Embedded
     private Address address;
+
+
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    private List<Order> orders;
 }
