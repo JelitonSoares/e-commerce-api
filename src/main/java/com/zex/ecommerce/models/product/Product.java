@@ -1,6 +1,7 @@
 package com.zex.ecommerce.models.product;
 
 import com.zex.ecommerce.dtos.ProductDTO;
+import com.zex.ecommerce.dtos.UpdateProductDTO;
 import com.zex.ecommerce.models.ordereditens.OrderedItens;
 import jakarta.persistence.*;
 import lombok.*;
@@ -57,5 +58,23 @@ public class Product {
         this.value = data.value();
         this.stock = data.stock();
         this.category = data.category();
+    }
+
+    public void updateProduct(UpdateProductDTO data) {
+        if (data.name() != null) {
+            this.name = data.name();
+        }
+
+        if (data.description() != null) {
+            this.description = data.description();
+        }
+
+        if (data.value() != null) {
+            this.value = data.value();
+        }
+
+        if (data.stock() != null) {
+            this.stock = this.stock + data.stock();
+        }
     }
 }
