@@ -44,10 +44,10 @@ public class ProductService {
         return new ProductDTO(product);
     }
 
-//    @Transactional
-//    public void delete(UUID id) {
-//        Product product = this.repository.getReferenceById(id);
-//
-//        this.repository.delete(product);
-//    }
+    @Transactional
+    public void delete(UUID id) {
+        Product product = this.repository.getReferenceById(id);
+
+        this.repository.delete(product);
+    }
 }
