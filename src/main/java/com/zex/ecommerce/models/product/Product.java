@@ -1,5 +1,6 @@
 package com.zex.ecommerce.models.product;
 
+import com.zex.ecommerce.dtos.ProductDTO;
 import com.zex.ecommerce.models.ordereditens.OrderedItens;
 import jakarta.persistence.*;
 import lombok.*;
@@ -49,4 +50,12 @@ public class Product {
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
     private List<OrderedItens> orderedItensList;
+
+    public Product(ProductDTO data) {
+        this.name = data.name();
+        this.description = data.description();
+        this.value = data.value();
+        this.stock = data.stock();
+        this.category = data.category();
+    }
 }
