@@ -1,6 +1,7 @@
 package com.zex.ecommerce.controllers;
 
 import com.zex.ecommerce.dtos.ProductDTO;
+import com.zex.ecommerce.dtos.UpdateProductDTO;
 import com.zex.ecommerce.services.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,13 @@ public class ProductController {
     public ResponseEntity<List<ProductDTO>> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.findAll());
     }
+
+    @PutMapping
+    public ResponseEntity<ProductDTO> update(@RequestBody @Valid UpdateProductDTO data) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.service.update(data));
+    }
+
+
 
 
 
