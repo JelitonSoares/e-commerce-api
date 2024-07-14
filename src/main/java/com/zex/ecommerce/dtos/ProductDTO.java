@@ -4,8 +4,10 @@ import com.zex.ecommerce.models.product.Category;
 import com.zex.ecommerce.models.product.Product;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
-public record ProductDTO(String name,
+public record ProductDTO(UUID id,
+                         String name,
                          String description,
                          BigDecimal value,
                          Integer stock,
@@ -13,7 +15,7 @@ public record ProductDTO(String name,
 
 
     public ProductDTO(Product product) {
-        this(product.getName(), product.getDescription(), product.getValue(), product.getStock(),
+        this(product.getId(), product.getName(), product.getDescription(), product.getValue(), product.getStock(),
                 product.getCategory());
     }
 }
