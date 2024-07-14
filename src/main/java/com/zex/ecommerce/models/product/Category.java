@@ -2,7 +2,7 @@ package com.zex.ecommerce.models.product;
 
 public enum Category {
     LIMPEZA,
-    HIGINENE,
+    HIGIENE,
     ALIMENTICIOS,
     PADARIA,
     ACOUGUE,
