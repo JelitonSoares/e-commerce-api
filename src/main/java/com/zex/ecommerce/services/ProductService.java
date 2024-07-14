@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -20,5 +22,14 @@ public class ProductService {
         product.setRegisterDate(LocalDate.now());
 
         return new ProductDTO(this.repository.save(product));
+    }
+
+
+    public List<ProductDTO> findAll() {
+        List<Product> products = this.repository.findAll();
+
+        return products.stream()
+                .map(p -> new ProductDTO(p))
+                .collect(Collectors.toList());
     }
 }
