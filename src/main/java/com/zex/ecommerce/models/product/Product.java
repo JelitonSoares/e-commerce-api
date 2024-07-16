@@ -1,7 +1,7 @@
 package com.zex.ecommerce.models.product;
 
-import com.zex.ecommerce.dtos.ProductDTO;
-import com.zex.ecommerce.dtos.UpdateProductDTO;
+import com.zex.ecommerce.dtos.product.ProductDTO;
+import com.zex.ecommerce.dtos.product.UpdateProductDTO;
 import com.zex.ecommerce.models.ordereditens.OrderedItens;
 import jakarta.persistence.*;
 import lombok.*;

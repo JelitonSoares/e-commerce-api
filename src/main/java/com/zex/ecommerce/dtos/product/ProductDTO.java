@@ -1,4 +1,4 @@
-package com.zex.ecommerce.dtos;
+package com.zex.ecommerce.dtos.product;
 
 import com.zex.ecommerce.models.product.Category;
 import com.zex.ecommerce.models.product.Product;
