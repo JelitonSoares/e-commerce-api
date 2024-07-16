@@ -1,0 +1,1 @@
+ALTER TABLE clients MODIFY COLUMN client_document VARCHAR(11) UNIQUE NOT NULL;
