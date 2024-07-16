@@ -7,6 +7,9 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class ClientService {
 
@@ -19,5 +22,14 @@ public class ClientService {
         Client client = new Client(data);
 
         return new ClientDTO(this.repository.save(client));
+    }
+
+
+    public List<ClientDTO> findAll() {
+        List<Client> clients = this.repository.findAll();
+
+        return clients.stream()
+                .map(c -> new ClientDTO(c))
+                .collect(Collectors.toList());
     }
 }
