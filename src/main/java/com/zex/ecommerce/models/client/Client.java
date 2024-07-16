@@ -1,5 +1,6 @@
 package com.zex.ecommerce.models.client;
 
+import com.zex.ecommerce.dtos.client.ClientDTO;
 import com.zex.ecommerce.models.order.Order;
 import jakarta.persistence.*;
 import lombok.*;
@@ -33,4 +34,10 @@ public class Client {
 
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private List<Order> orders;
+
+    public Client(ClientDTO data) {
+        this.name = data.name();
+        this.document = data.document();
+        this.address = new Address(data.address());
+    }
 }
