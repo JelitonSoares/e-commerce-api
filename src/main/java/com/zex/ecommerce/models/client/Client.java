@@ -25,7 +25,7 @@ public class Client {
     @Column(name = "client_name")
     private String name;
 
-    @Column(name = "client_document")
+    @Column(name = "client_document", unique = true)
     private String document;
 
     @Embedded
