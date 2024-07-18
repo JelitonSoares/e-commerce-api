@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/ecommerce/clients")
@@ -32,5 +33,10 @@ public class ClientController {
     @PutMapping
     public ResponseEntity<ClientDTO> update(@RequestBody UpdateClientDTO data) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.update(data));
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable UUID id) {
+        this.service.delete(id);
     }
 }
