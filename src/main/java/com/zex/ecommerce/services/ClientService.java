@@ -1,6 +1,7 @@
 package com.zex.ecommerce.services;
 
 import com.zex.ecommerce.dtos.client.ClientDTO;
+import com.zex.ecommerce.dtos.client.UpdateClientDTO;
 import com.zex.ecommerce.models.client.Client;
 import com.zex.ecommerce.repositories.ClientRepository;
 import jakarta.transaction.Transactional;
@@ -31,5 +32,14 @@ public class ClientService {
         return clients.stream()
                 .map(c -> new ClientDTO(c))
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public ClientDTO update(UpdateClientDTO data) {
+        Client client = this.repository.getReferenceById(data.id());
+
+        client.updateClient(data);
+
+        return new ClientDTO(this.repository.save(client));
     }
 }
