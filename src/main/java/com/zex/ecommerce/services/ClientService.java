@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,5 +42,12 @@ public class ClientService {
         client.updateClient(data);
 
         return new ClientDTO(this.repository.save(client));
+    }
+
+    @Transactional
+    public void delete(UUID id) {
+        Client client = this.repository.getReferenceById(id);
+
+        this.repository.delete(client);
     }
 }
