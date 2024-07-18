@@ -1,6 +1,7 @@
 package com.zex.ecommerce.models.client;
 
 import com.zex.ecommerce.dtos.client.ClientDTO;
+import com.zex.ecommerce.dtos.client.UpdateClientDTO;
 import com.zex.ecommerce.models.order.Order;
 import jakarta.persistence.*;
 import lombok.*;
@@ -39,5 +40,15 @@ public class Client {
         this.name = data.name();
         this.document = data.document();
         this.address = new Address(data.address());
+    }
+
+    public void updateClient (UpdateClientDTO data) {
+        if (data.name() != null) {
+            this.name = data.name();
+        }
+
+        if (data.address() != null) {
+            this.address.updateAddress(data.address());
+        }
     }
 }

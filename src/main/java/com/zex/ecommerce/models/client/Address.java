@@ -46,4 +46,27 @@ public class Address {
         this.cep = data.cep();
         this.complement = data.complement();
     }
+
+    public void updateAddress(AddressDTO data) {
+        if(data.publicPlace() != null) {
+            this.publicPlace = data.publicPlace();
+        }
+
+        if(data.neighborhood() != null) {
+            this.neighborhood = data.neighborhood();
+        }
+
+        if(data.city() != null) {
+            this.city = data.city();
+        }
+
+        if(data.uf() != null) {
+            this.uf = data.uf();
+        }
+
+        if(data.cep() != null) {
+            this.cep = data.cep();
+        }
+
+    }
 }
