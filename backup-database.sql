@@ -16,6 +16,44 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Dumping data for table `clients`
+--
+
+LOCK TABLES `clients` WRITE;
+/*!40000 ALTER TABLE `clients` DISABLE KEYS */;
+INSERT INTO `clients` VALUES (_binary '\À˚\nÉüFHë,\‹M¯\≈','Zaide Vieira Matos','18745688899','Pra√ßa Soldado Geraldo',66,'Vilela','Santa Maria Marcos','SC','41233011',NULL),(_binary '!O£L◊å@≠ø^7û`ÑAD','Lucas Pereira','58967132054','Alameda dos Pinheiros',215,'Bosque Encantado','Nova Esperan√ßa','BA','47891234','Bloco C, APT 45'),(_binary '…º7xºmBAÜéóûΩ\r\Ë>','Marcela Freitas','76215894031','Avenida das Flores',120,'Lagoa Verde','Vila Nova da Serra','MG','38501234',NULL),(_binary '\Ã+^qà-DgñΩ/\È','Carlos Souza','30528471692','Travessa da Amizade',89,'Ponta do Sol','Mirante do Horizonte','RJ','22045678','Casa B'),(_binary '\‡xØ6lBÅ*\—ıcIã\Ô','Olda Strauss','78945612310','Orla Benevut',89,'Batista','Concha Azul','ES','89541165','APTO 806'),(_binary '\ËKb†pKßá>\«s¢¡Y','Rubens Alvarez','15568974788','Rua Jardins Azul',54,'Barranco','S√£o Jos√© das Palmeiras','ES','45120003','APT 308'),(_binary 'Ú\Â^æ\ÏGñú4Ú<.','Kelly Alves Frandoso','11123125789','Rodovia Marcos Andrade',12,'Polenta','Santa Trina','SP','12544123','APTO 305'),(_binary 'Û–®∆ëOOí\–GÃ´çiñ','Dalton Marques','55465485412','Estrada Mata Cachorro',NULL,'Zona Rural','Vicoso','AM','35312000','Sitio Marac√°'),(_binary '˜ê\Ó≥=\·BªÆ;èWw ','Livina Andrade Xavier','04901203700','Rua da Amizade',789,'Jo√£o Deita','Ioca','PE','41236001',NULL);
+/*!40000 ALTER TABLE `clients` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `flyway_schema_history`
+--
+
+LOCK TABLES `flyway_schema_history` WRITE;
+/*!40000 ALTER TABLE `flyway_schema_history` DISABLE KEYS */;
+INSERT INTO `flyway_schema_history` VALUES (1,'1','create-table-products','SQL','V1__create-table-products.sql',1843949286,'root','2024-07-16 00:01:42',43,1),(2,'2','create-table-clients','SQL','V2__create-table-clients.sql',-1222640770,'root','2024-07-16 00:01:42',117,1),(3,'3','create-table-orders-and-add-foreignkey-idclients','SQL','V3__create-table-orders-and-add-foreignkey-idclients.sql',-344303143,'root','2024-07-16 00:01:42',65,1),(4,'4','create-jointable-orderd-itens-and-add-foreignkey-productid-and-orderid','SQL','V4__create-jointable-orderd-itens-and-add-foreignkey-productid-and-orderid.sql',1390809839,'root','2024-07-16 00:01:42',59,1),(5,'5','alter-table-clients-modify-column-clientdocument','SQL','V5__alter-table-clients-modify-column-clientdocument.sql',633548719,'root','2024-07-16 00:51:40',74,1);
+/*!40000 ALTER TABLE `flyway_schema_history` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `ordered_itens`
+--
+
+LOCK TABLES `ordered_itens` WRITE;
+/*!40000 ALTER TABLE `ordered_itens` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ordered_itens` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `orders`
+--
+
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping data for table `products`
 --
 
@@ -34,4 +72,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-14 19:08:36
+-- Dump completed on 2024-07-18 18:25:34
