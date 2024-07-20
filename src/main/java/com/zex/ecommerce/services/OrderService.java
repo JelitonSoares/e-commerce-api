@@ -45,4 +45,12 @@ public class OrderService {
 
         return new OrderDTO(orderSaved);
     }
+
+    public List<OrderDTO> findAll() {
+        List<Order> orders = this.repository.findAll();
+
+        return orders.stream()
+                .map(o -> new OrderDTO(o))
+                .collect(Collectors.toList());
+    }
 }
