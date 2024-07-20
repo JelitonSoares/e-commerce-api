@@ -1,6 +1,5 @@
 package com.zex.ecommerce.models.ordereditens;
 
-import com.zex.ecommerce.dtos.order.OrderedProductsDTO;
 import com.zex.ecommerce.models.order.Order;
 import com.zex.ecommerce.models.product.Product;
 import jakarta.persistence.*;
@@ -10,7 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.List;
 import java.util.UUID;
 
 @Entity(name = "ordered_itens")
