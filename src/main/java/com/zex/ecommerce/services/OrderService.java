@@ -1,7 +1,7 @@
 package com.zex.ecommerce.services;
 
 import com.zex.ecommerce.dtos.order.OrderDTO;
-import com.zex.ecommerce.dtos.order.CreateOrderDTO;
+import com.zex.ecommerce.dtos.order.create.CreateOrderDTO;
 import com.zex.ecommerce.models.client.Client;
 import com.zex.ecommerce.models.order.Order;
 import com.zex.ecommerce.models.ordereditens.OrderedItens;

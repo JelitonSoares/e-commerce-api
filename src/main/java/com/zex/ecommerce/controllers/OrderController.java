@@ -1,7 +1,7 @@
 package com.zex.ecommerce.controllers;
 
 import com.zex.ecommerce.dtos.order.OrderDTO;
-import com.zex.ecommerce.dtos.order.CreateOrderDTO;
+import com.zex.ecommerce.dtos.order.create.CreateOrderDTO;
 import com.zex.ecommerce.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

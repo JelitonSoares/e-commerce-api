@@ -1,4 +1,4 @@
-package com.zex.ecommerce.dtos.order;
+package com.zex.ecommerce.dtos.order.create;
 
 import com.zex.ecommerce.models.order.Order;
 
