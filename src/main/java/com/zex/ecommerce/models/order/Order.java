@@ -1,11 +1,9 @@
 package com.zex.ecommerce.models.order;
 
-import com.zex.ecommerce.dtos.order.OrderDTO;
 import com.zex.ecommerce.models.client.Client;
 import com.zex.ecommerce.models.ordereditens.OrderedItens;
 import jakarta.persistence.*;
 import lombok.*;
-import org.aspectj.weaver.ast.Or;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
