@@ -49,7 +49,7 @@ public class Product {
     private LocalDate registerDate;
 
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<OrderedItens> orderedItensList;
 
     public Product(ProductDTO data) {
@@ -76,5 +76,13 @@ public class Product {
         if (data.stock() != null) {
             this.stock = this.stock + data.stock();
         }
+    }
+
+    public void addOrderedItens(OrderedItens itens) {
+        this.orderedItensList.add(itens);
+    }
+
+    public void updateStock(Integer amount) {
+        this.stock = stock - amount;
     }
 }

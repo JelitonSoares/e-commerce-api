@@ -51,4 +51,8 @@ public class Client {
             this.address.updateAddress(data.address());
         }
     }
+
+    public void addOrder(Order order) {
+        this.orders.add(order);
+    }
 }

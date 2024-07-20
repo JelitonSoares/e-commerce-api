@@ -1,14 +1,24 @@
 package com.zex.ecommerce.models.ordereditens;
 
+import com.zex.ecommerce.dtos.order.OrderedProductsDTO;
 import com.zex.ecommerce.models.order.Order;
 import com.zex.ecommerce.models.product.Product;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 @Entity(name = "ordered_itens")
 @Table(name = "ordered_itens")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class OrderedItens {
 
     @Id
@@ -18,7 +28,6 @@ public class OrderedItens {
     @JoinColumn(name = "order_id")
     private Order order;
 
-
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
@@ -27,5 +36,23 @@ public class OrderedItens {
 
     @Column(name  = "unitary_value")
     private BigDecimal unitaryValue;
+
+
+
+
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public OrderedItens (Product product, Integer amount) {
+        this.amount = amount;
+        this.product = product;
+        this.unitaryValue = product.getValue();
+    }
+
+    public BigDecimal totalValue() {
+        return this.unitaryValue.multiply(new BigDecimal(this.amount));
+    }
 
 }

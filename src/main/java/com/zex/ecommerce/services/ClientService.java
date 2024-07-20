@@ -50,4 +50,8 @@ public class ClientService {
 
         this.repository.delete(client);
     }
+
+    public Client getReferenceByID(UUID id) {
+        return this.repository.getReferenceById(id);
+    }
 }

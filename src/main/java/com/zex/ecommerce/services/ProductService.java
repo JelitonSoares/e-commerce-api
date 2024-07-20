@@ -50,4 +50,8 @@ public class ProductService {
 
         this.repository.delete(product);
     }
+
+    public Product getReferenceByID(UUID id) {
+        return this.repository.getReferenceById(id);
+    }
 }
