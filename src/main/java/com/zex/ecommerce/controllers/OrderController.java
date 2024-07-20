@@ -1,8 +1,11 @@
 package com.zex.ecommerce.controllers;
 
 import com.zex.ecommerce.dtos.order.OrderDTO;
+import com.zex.ecommerce.dtos.order.CreateOrderDTO;
 import com.zex.ecommerce.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +18,7 @@ public class OrderController {
     private OrderService service;
 
     @PostMapping
-    public void create(@RequestBody OrderDTO data) {
-        this.service.create(data);
+    public ResponseEntity<OrderDTO> create(@RequestBody CreateOrderDTO data) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(this.service.create(data));
     }
 }

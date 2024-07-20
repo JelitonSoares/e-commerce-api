@@ -1,10 +1,10 @@
 package com.zex.ecommerce.services;
 
 import com.zex.ecommerce.dtos.order.OrderDTO;
+import com.zex.ecommerce.dtos.order.CreateOrderDTO;
 import com.zex.ecommerce.models.client.Client;
 import com.zex.ecommerce.models.order.Order;
 import com.zex.ecommerce.models.ordereditens.OrderedItens;
-import com.zex.ecommerce.models.product.Product;
 import com.zex.ecommerce.repositories.OrderRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,7 +24,7 @@ public class OrderService {
     private ProductService productService;
 
     @Transactional
-    public void create(OrderDTO data) {
+    public OrderDTO create(CreateOrderDTO data) {
 
         List<OrderedItens> itens = data.products().stream()
                 .map(p -> new OrderedItens(this.productService.getReferenceByID(p.productId()),p.amount()))
@@ -37,11 +36,13 @@ public class OrderService {
 
         Order order = new Order();
 
-        Client cliet = this.clientService.getReferenceByID(data.clientId());
-        order.setClient(cliet);
+        Client client = this.clientService.getReferenceByID(data.clientId());
+        order.setClient(client);
         order.setOrderDate(LocalDate.now());
         order.setOrderedItensList(itens);
 
-        this.repository.save(order);
+        Order orderSaved = this.repository.save(order);
+
+        return new OrderDTO(orderSaved);
     }
 }
