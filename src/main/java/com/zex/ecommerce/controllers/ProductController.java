@@ -6,10 +6,14 @@ import com.zex.ecommerce.dtos.product.UpdateProductDTO;
 import com.zex.ecommerce.services.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+
 
 import java.net.URI;
 import java.util.List;
@@ -33,8 +37,8 @@ public class ProductController {
 
 
     @GetMapping
-    public ResponseEntity<List<CreateProductDTO>> findAll() {
-        return ResponseEntity.status(HttpStatus.OK).body(this.service.findAll());
+    public ResponseEntity<PagedModel<DetailsProductDTO>> getAll(@PageableDefault(size = 10, sort = {"category"}) Pageable pageable) {
+        return ResponseEntity.status(HttpStatus.OK).body(new PagedModel(this.service.getAll(pageable)));
     }
 
     @PutMapping
