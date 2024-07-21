@@ -8,8 +8,7 @@ import jakarta.validation.constraints.Pattern;
 
 import java.util.UUID;
 
-public record CreateClientDTO(UUID id,
-                              @NotBlank
+public record CreateClientDTO(@NotBlank
                               String name,
                               @NotBlank
                               @Pattern(regexp = "\\d{11}")
