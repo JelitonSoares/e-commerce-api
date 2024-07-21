@@ -1,6 +1,6 @@
 package com.zex.ecommerce.controllers;
 
-import com.zex.ecommerce.dtos.product.ProductDTO;
+import com.zex.ecommerce.dtos.product.CreateProductDTO;
 import com.zex.ecommerce.dtos.product.UpdateProductDTO;
 import com.zex.ecommerce.services.ProductService;
 import jakarta.validation.Valid;
@@ -19,18 +19,18 @@ public class ProductController {
     private ProductService service;
 
     @PostMapping
-    public ResponseEntity<ProductDTO> save(@RequestBody @Valid ProductDTO data) {
+    public ResponseEntity<CreateProductDTO> save(@RequestBody @Valid CreateProductDTO data) {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(data));
     }
 
 
     @GetMapping
-    public ResponseEntity<List<ProductDTO>> findAll() {
+    public ResponseEntity<List<CreateProductDTO>> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.findAll());
     }
 
     @PutMapping
-    public ResponseEntity<ProductDTO> update(@RequestBody @Valid UpdateProductDTO data) {
+    public ResponseEntity<CreateProductDTO> update(@RequestBody @Valid UpdateProductDTO data) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.update(data));
     }
 

@@ -8,20 +8,20 @@ import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public record ProductDTO(UUID id,
-                         @NotBlank
+public record CreateProductDTO(UUID id,
+                               @NotBlank
                          String name,
-                         @NotBlank
+                               @NotBlank
                          String description,
-                         @NotNull
+                               @NotNull
                          BigDecimal value,
-                         @NotNull
+                               @NotNull
                          Integer stock,
-                         @NotNull
+                               @NotNull
                          Category category) {
 
 
-    public ProductDTO(Product product) {
+    public CreateProductDTO(Product product) {
         this(product.getId(), product.getName(), product.getDescription(), product.getValue(), product.getStock(),
                 product.getCategory());
     }
