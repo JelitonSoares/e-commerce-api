@@ -8,17 +8,17 @@ import jakarta.validation.constraints.Pattern;
 
 import java.util.UUID;
 
-public record ClientDTO(UUID id,
-                        @NotBlank
+public record CreateClientDTO(UUID id,
+                              @NotBlank
                         String name,
-                        @NotBlank
+                              @NotBlank
                         @Pattern(regexp = "\\d{11}")
                         String document,
-                        @NotNull
+                              @NotNull
                         @Valid
-                        AddressDTO address) {
+                              CreateAddressDTO address) {
 
-    public ClientDTO(Client client) {
-        this(client.getId(), client.getName(), client.getDocument(), new AddressDTO(client.getAddress()));
+    public CreateClientDTO(Client client) {
+        this(client.getId(), client.getName(), client.getDocument(), new CreateAddressDTO(client.getAddress()));
     }
 }

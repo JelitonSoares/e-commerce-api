@@ -1,6 +1,6 @@
 package com.zex.ecommerce.services;
 
-import com.zex.ecommerce.dtos.client.ClientDTO;
+import com.zex.ecommerce.dtos.client.CreateClientDTO;
 import com.zex.ecommerce.dtos.client.UpdateClientDTO;
 import com.zex.ecommerce.models.client.Client;
 import com.zex.ecommerce.repositories.ClientRepository;
@@ -20,28 +20,28 @@ public class ClientService {
     private ClientRepository repository;
 
     @Transactional
-    public ClientDTO save(ClientDTO data) {
+    public CreateClientDTO save(CreateClientDTO data) {
         Client client = new Client(data);
 
-        return new ClientDTO(this.repository.save(client));
+        return new CreateClientDTO(this.repository.save(client));
     }
 
 
-    public List<ClientDTO> findAll() {
+    public List<CreateClientDTO> findAll() {
         List<Client> clients = this.repository.findAll();
 
         return clients.stream()
-                .map(c -> new ClientDTO(c))
+                .map(c -> new CreateClientDTO(c))
                 .collect(Collectors.toList());
     }
 
     @Transactional
-    public ClientDTO update(UpdateClientDTO data) {
+    public CreateClientDTO update(UpdateClientDTO data) {
         Client client = this.repository.getReferenceById(data.id());
 
         client.updateClient(data);
 
-        return new ClientDTO(this.repository.save(client));
+        return new CreateClientDTO(this.repository.save(client));
     }
 
     @Transactional

@@ -1,6 +1,6 @@
 package com.zex.ecommerce.controllers;
 
-import com.zex.ecommerce.dtos.client.ClientDTO;
+import com.zex.ecommerce.dtos.client.CreateClientDTO;
 import com.zex.ecommerce.dtos.client.UpdateClientDTO;
 import com.zex.ecommerce.services.ClientService;
 import jakarta.validation.Valid;
@@ -20,18 +20,18 @@ public class ClientController {
     private ClientService service;
 
     @PostMapping
-    public ResponseEntity<ClientDTO> save(@RequestBody @Valid ClientDTO data) {
+    public ResponseEntity<CreateClientDTO> save(@RequestBody @Valid CreateClientDTO data) {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(data));
     }
 
 
     @GetMapping
-    public ResponseEntity<List<ClientDTO>> findAll() {
+    public ResponseEntity<List<CreateClientDTO>> findAll() {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.findAll());
     }
 
     @PutMapping
-    public ResponseEntity<ClientDTO> update(@RequestBody UpdateClientDTO data) {
+    public ResponseEntity<CreateClientDTO> update(@RequestBody UpdateClientDTO data) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.update(data));
     }
 

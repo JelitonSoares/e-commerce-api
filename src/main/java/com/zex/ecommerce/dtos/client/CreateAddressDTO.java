@@ -2,23 +2,22 @@ package com.zex.ecommerce.dtos.client;
 
 import com.zex.ecommerce.models.client.Address;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
-public record AddressDTO(@NotBlank String publicPlace,
-                         Integer number,
-                         @NotBlank
+public record CreateAddressDTO(@NotBlank String publicPlace,
+                               Integer number,
+                               @NotBlank
                          String neighborhood,
-                         @NotBlank
+                               @NotBlank
                          String city,
-                         @NotBlank
+                               @NotBlank
                          String uf,
-                         @NotBlank
+                               @NotBlank
                                  @Pattern(regexp = "\\d{8}")
                          String cep,
-                         String complement) {
+                               String complement) {
 
-    public AddressDTO(Address address) {
+    public CreateAddressDTO(Address address) {
         this(address.getPublicPlace(), address.getNumber(), address.getNeighborhood(), address.getCity(), address.getUf(),
                 address.getCep(), address.getComplement());
     }
