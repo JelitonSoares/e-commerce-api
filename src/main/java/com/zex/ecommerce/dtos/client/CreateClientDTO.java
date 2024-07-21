@@ -18,7 +18,4 @@ public record CreateClientDTO(UUID id,
                               @Valid
                               CreateAddressDTO address) {
 
-    public CreateClientDTO(Client client) {
-        this(client.getId(), client.getName(), client.getDocument(), new CreateAddressDTO(client.getAddress()));
-    }
 }

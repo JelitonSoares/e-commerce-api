@@ -17,8 +17,4 @@ public record CreateAddressDTO(@NotBlank String publicPlace,
                                String cep,
                                String complement) {
 
-    public CreateAddressDTO(Address address) {
-        this(address.getPublicPlace(), address.getNumber(), address.getNeighborhood(), address.getCity(), address.getUf(),
-                address.getCep(), address.getComplement());
-    }
 }
