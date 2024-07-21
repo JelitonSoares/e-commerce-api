@@ -55,4 +55,12 @@ public class ClientService {
     public Client getReferenceByID(UUID id) {
         return this.repository.getReferenceById(id);
     }
+
+
+    public DetailsClientDTO details(UUID id) {
+        Client client = this.getReferenceByID(id);
+
+        return new DetailsClientDTO(client);
+    }
+
 }

@@ -51,4 +51,10 @@ public class ClientController {
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DetailsClientDTO> detais(@PathVariable UUID id) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.service.details(id));
+    }
 }
