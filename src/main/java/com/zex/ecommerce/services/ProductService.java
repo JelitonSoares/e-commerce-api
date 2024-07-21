@@ -1,6 +1,7 @@
 package com.zex.ecommerce.services;
 
 import com.zex.ecommerce.dtos.product.CreateProductDTO;
+import com.zex.ecommerce.dtos.product.DetailsProductDTO;
 import com.zex.ecommerce.dtos.product.UpdateProductDTO;
 import com.zex.ecommerce.models.product.Product;
 import com.zex.ecommerce.repositories.ProductRepository;
@@ -19,11 +20,11 @@ public class ProductService {
     private ProductRepository repository;
 
     @Transactional
-    public CreateProductDTO save(CreateProductDTO data) {
+    public DetailsProductDTO create(CreateProductDTO data) {
         Product product = new Product(data);
         product.setRegisterDate(LocalDate.now());
 
-        return new CreateProductDTO(this.repository.save(product));
+        return new DetailsProductDTO(this.repository.save(product));
     }
 
 
