@@ -37,12 +37,12 @@ public class ClientService {
     }
 
     @Transactional
-    public CreateClientDTO update(UpdateClientDTO data) {
+    public DetailsClientDTO update(UpdateClientDTO data) {
         Client client = this.repository.getReferenceById(data.id());
 
         client.updateClient(data);
 
-        return new CreateClientDTO(this.repository.save(client));
+        return new DetailsClientDTO(this.repository.save(client));
     }
 
     @Transactional
