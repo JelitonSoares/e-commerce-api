@@ -7,7 +7,11 @@ import com.zex.ecommerce.models.product.Product;
 import com.zex.ecommerce.repositories.ProductRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PagedModel;
 import org.springframework.stereotype.Service;
+
 
 import java.time.LocalDate;
 import java.util.List;
@@ -28,12 +32,10 @@ public class ProductService {
     }
 
 
-    public List<CreateProductDTO> findAll() {
-        List<Product> products = this.repository.findAll();
+    public Page<DetailsProductDTO> getAll(Pageable pageable) {
+        Page<Product> products = this.repository.findAll(pageable);
 
-        return products.stream()
-                .map(p -> new CreateProductDTO(p))
-                .collect(Collectors.toList());
+        return products.map(p -> new DetailsProductDTO(p));
     }
 
     @Transactional
