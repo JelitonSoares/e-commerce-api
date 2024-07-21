@@ -14,9 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-
 import java.net.URI;
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -42,14 +40,16 @@ public class ProductController {
     }
 
     @PutMapping
-    public ResponseEntity<CreateProductDTO> update(@RequestBody @Valid UpdateProductDTO data) {
+    public ResponseEntity<DetailsProductDTO> update(@RequestBody @Valid UpdateProductDTO data) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.update(data));
     }
 
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable UUID id) {
+    public ResponseEntity delete(@PathVariable UUID id) {
         this.service.delete(id);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
 
