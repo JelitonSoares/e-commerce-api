@@ -1,6 +1,6 @@
 package com.zex.ecommerce.models.client;
 
-import com.zex.ecommerce.dtos.client.AddressDTO;
+import com.zex.ecommerce.dtos.client.CreateAddressDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
@@ -37,7 +37,7 @@ public class Address {
     private String complement;
 
 
-    public Address(AddressDTO data) {
+    public Address(CreateAddressDTO data) {
         this.publicPlace = data.publicPlace();
         this.number = data.number();
         this.neighborhood = data.neighborhood();
@@ -47,7 +47,7 @@ public class Address {
         this.complement = data.complement();
     }
 
-    public void updateAddress(AddressDTO data) {
+    public void updateAddress(CreateAddressDTO data) {
         if(data.publicPlace() != null) {
             this.publicPlace = data.publicPlace();
         }
