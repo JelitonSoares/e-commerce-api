@@ -1,7 +1,6 @@
 package com.zex.ecommerce.dtos.product;
 
 import com.zex.ecommerce.models.product.Category;
-import com.zex.ecommerce.models.product.Product;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -20,9 +19,4 @@ public record CreateProductDTO(UUID id,
                                @NotNull
                          Category category) {
 
-
-    public CreateProductDTO(Product product) {
-        this(product.getId(), product.getName(), product.getDescription(), product.getValue(), product.getStock(),
-                product.getCategory());
-    }
 }
