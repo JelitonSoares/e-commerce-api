@@ -7,6 +7,8 @@ import com.zex.ecommerce.models.client.Client;
 import com.zex.ecommerce.repositories.ClientRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,12 +30,10 @@ public class ClientService {
     }
 
 
-    public List<CreateClientDTO> findAll() {
-        List<Client> clients = this.repository.findAll();
+    public Page<DetailsClientDTO> getAll(Pageable pageable) {
+        Page<Client> clients = this.repository.findAll(pageable);
 
-        return clients.stream()
-                .map(c -> new CreateClientDTO(c))
-                .collect(Collectors.toList());
+        return clients.map(c -> new DetailsClientDTO(c));
     }
 
     @Transactional
