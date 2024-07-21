@@ -10,12 +10,12 @@ import java.util.UUID;
 
 public record CreateClientDTO(UUID id,
                               @NotBlank
-                        String name,
+                              String name,
                               @NotBlank
-                        @Pattern(regexp = "\\d{11}")
-                        String document,
+                              @Pattern(regexp = "\\d{11}")
+                              String document,
                               @NotNull
-                        @Valid
+                              @Valid
                               CreateAddressDTO address) {
 
     public CreateClientDTO(Client client) {

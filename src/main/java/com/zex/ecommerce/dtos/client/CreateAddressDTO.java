@@ -7,14 +7,14 @@ import jakarta.validation.constraints.Pattern;
 public record CreateAddressDTO(@NotBlank String publicPlace,
                                Integer number,
                                @NotBlank
-                         String neighborhood,
+                               String neighborhood,
                                @NotBlank
-                         String city,
+                               String city,
                                @NotBlank
-                         String uf,
+                               String uf,
                                @NotBlank
-                                 @Pattern(regexp = "\\d{8}")
-                         String cep,
+                               @Pattern(regexp = "\\d{8}")
+                               String cep,
                                String complement) {
 
     public CreateAddressDTO(Address address) {
