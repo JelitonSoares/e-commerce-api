@@ -41,7 +41,7 @@ public class ClientController {
     }
 
     @PutMapping
-    public ResponseEntity<DetailsClientDTO> update(@RequestBody UpdateClientDTO data) {
+    public ResponseEntity<DetailsClientDTO> update(@RequestBody @Valid UpdateClientDTO data) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.update(data));
     }
 
