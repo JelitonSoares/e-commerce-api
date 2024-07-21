@@ -54,6 +54,13 @@ public class ProductService {
         this.repository.delete(product);
     }
 
+
+    public DetailsProductDTO details(UUID id) {
+        Product product = this.getReferenceByID(id);
+
+        return new DetailsProductDTO(product);
+    }
+
     public Product getReferenceByID(UUID id) {
         return this.repository.getReferenceById(id);
     }

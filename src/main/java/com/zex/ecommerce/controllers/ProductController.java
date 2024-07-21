@@ -53,5 +53,11 @@ public class ProductController {
     }
 
 
+    @GetMapping("/{id}")
+    public ResponseEntity<DetailsProductDTO> details(@PathVariable UUID id) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.service.details(id));
+    }
+
+
 
 }
