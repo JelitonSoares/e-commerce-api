@@ -53,6 +53,10 @@ public class Address {
             this.publicPlace = data.publicPlace();
         }
 
+        if(data.number() != null) {
+            this.number = data.number();
+        }
+
         if(data.neighborhood() != null) {
             this.neighborhood = data.neighborhood();
         }
@@ -67,6 +71,10 @@ public class Address {
 
         if(data.cep() != null) {
             this.cep = data.cep();
+        }
+
+        if(data.complement() != null) {
+            this.complement = data.complement();
         }
 
     }
