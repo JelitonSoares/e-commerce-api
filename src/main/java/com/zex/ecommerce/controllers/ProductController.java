@@ -1,6 +1,7 @@
 package com.zex.ecommerce.controllers;
 
 import com.zex.ecommerce.dtos.product.CreateProductDTO;
+import com.zex.ecommerce.dtos.product.DetailsProductDTO;
 import com.zex.ecommerce.dtos.product.UpdateProductDTO;
 import com.zex.ecommerce.services.ProductService;
 import jakarta.validation.Valid;
@@ -8,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.UUID;
 
@@ -19,8 +22,13 @@ public class ProductController {
     private ProductService service;
 
     @PostMapping
-    public ResponseEntity<CreateProductDTO> save(@RequestBody @Valid CreateProductDTO data) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(this.service.save(data));
+    public ResponseEntity<DetailsProductDTO> create(@RequestBody @Valid CreateProductDTO data, UriComponentsBuilder componentsBuilder) {
+        DetailsProductDTO dto = this.service.create(data);
+
+        URI uri = componentsBuilder.path("/ecommerce/products/{id}").buildAndExpand(dto.id()).toUri();
+
+
+        return ResponseEntity.status(HttpStatus.CREATED).location(uri).body(dto);
     }
 
 
