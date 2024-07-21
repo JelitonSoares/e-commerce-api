@@ -1,6 +1,7 @@
 package com.zex.ecommerce.services;
 
 import com.zex.ecommerce.dtos.client.CreateClientDTO;
+import com.zex.ecommerce.dtos.client.DetailsClientDTO;
 import com.zex.ecommerce.dtos.client.UpdateClientDTO;
 import com.zex.ecommerce.models.client.Client;
 import com.zex.ecommerce.repositories.ClientRepository;
@@ -20,10 +21,10 @@ public class ClientService {
     private ClientRepository repository;
 
     @Transactional
-    public CreateClientDTO save(CreateClientDTO data) {
+    public DetailsClientDTO create(CreateClientDTO data) {
         Client client = new Client(data);
 
-        return new CreateClientDTO(this.repository.save(client));
+        return new DetailsClientDTO(this.repository.save(client));
     }
 
 
