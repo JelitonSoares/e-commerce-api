@@ -39,12 +39,12 @@ public class ProductService {
     }
 
     @Transactional
-    public CreateProductDTO update(UpdateProductDTO data) {
+    public DetailsProductDTO update(UpdateProductDTO data) {
         Product product = this.repository.getReferenceById(data.id());
 
         product.updateProduct(data);
 
-        return new CreateProductDTO(product);
+        return new DetailsProductDTO(product);
     }
 
     @Transactional
