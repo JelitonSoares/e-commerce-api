@@ -1,4 +1,5 @@
-![ecommerce_api_logo_with_border](https://github.com/user-attachments/assets/97e6ed27-abbf-4d70-8185-817f553843aa)
+![logo](https://github.com/user-attachments/assets/8dbee840-0cad-4b35-8002-944635124122)
+
 
 # E-commerce
 A personal e-commerce project, where you can simulate your purchases. register clients and products.
