@@ -1,6 +1,4 @@
-package com.zex.ecommerce.dtos.order;
-
-import com.zex.ecommerce.models.order.Order;
+package com.zex.ecommerce.domain.order;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

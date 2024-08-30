@@ -1,6 +1,6 @@
-package com.zex.ecommerce.dtos.order.create;
+package com.zex.ecommerce.domain.order;
 
-import com.zex.ecommerce.models.ordereditens.OrderedItens;
+import com.zex.ecommerce.domain.ordereditens.OrderedItens;
 
 import java.util.UUID;
 

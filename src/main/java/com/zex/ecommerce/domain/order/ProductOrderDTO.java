@@ -1,6 +1,6 @@
-package com.zex.ecommerce.dtos.order;
+package com.zex.ecommerce.domain.order;
 
-import com.zex.ecommerce.models.ordereditens.OrderedItens;
+import com.zex.ecommerce.domain.ordereditens.OrderedItens;
 
 import java.math.BigDecimal;
 import java.util.UUID;

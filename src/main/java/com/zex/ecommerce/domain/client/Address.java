@@ -1,7 +1,5 @@
-package com.zex.ecommerce.models.client;
+package com.zex.ecommerce.domain.client;
 
-import com.zex.ecommerce.dtos.client.CreateAddressDTO;
-import com.zex.ecommerce.dtos.client.UpdateAddressDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

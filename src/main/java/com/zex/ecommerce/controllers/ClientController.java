@@ -1,8 +1,8 @@
 package com.zex.ecommerce.controllers;
 
-import com.zex.ecommerce.dtos.client.CreateClientDTO;
-import com.zex.ecommerce.dtos.client.DetailsClientDTO;
-import com.zex.ecommerce.dtos.client.UpdateClientDTO;
+import com.zex.ecommerce.domain.client.CreateClientDTO;
+import com.zex.ecommerce.domain.client.DetailsClientDTO;
+import com.zex.ecommerce.domain.client.UpdateClientDTO;
 import com.zex.ecommerce.services.ClientService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

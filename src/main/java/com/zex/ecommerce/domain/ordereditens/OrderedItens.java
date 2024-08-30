@@ -1,7 +1,7 @@
-package com.zex.ecommerce.models.ordereditens;
+package com.zex.ecommerce.domain.ordereditens;
 
-import com.zex.ecommerce.models.order.Order;
-import com.zex.ecommerce.models.product.Product;
+import com.zex.ecommerce.domain.order.Order;
+import com.zex.ecommerce.domain.product.Product;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

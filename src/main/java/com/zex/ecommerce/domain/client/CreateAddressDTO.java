@@ -1,6 +1,5 @@
-package com.zex.ecommerce.dtos.client;
+package com.zex.ecommerce.domain.client;
 
-import com.zex.ecommerce.models.client.Address;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 

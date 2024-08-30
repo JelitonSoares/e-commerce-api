@@ -1,4 +1,4 @@
-package com.zex.ecommerce.dtos.client;
+package com.zex.ecommerce.domain.client;
 
 
 import jakarta.validation.constraints.Pattern;

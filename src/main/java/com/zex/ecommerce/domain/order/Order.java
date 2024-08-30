@@ -1,7 +1,7 @@
-package com.zex.ecommerce.models.order;
+package com.zex.ecommerce.domain.order;
 
-import com.zex.ecommerce.models.client.Client;
-import com.zex.ecommerce.models.ordereditens.OrderedItens;
+import com.zex.ecommerce.domain.client.Client;
+import com.zex.ecommerce.domain.ordereditens.OrderedItens;
 import jakarta.persistence.*;
 import lombok.*;
 

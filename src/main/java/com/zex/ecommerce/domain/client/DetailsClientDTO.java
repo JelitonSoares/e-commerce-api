@@ -1,6 +1,4 @@
-package com.zex.ecommerce.dtos.client;
-
-import com.zex.ecommerce.models.client.Client;
+package com.zex.ecommerce.domain.client;
 
 import java.util.UUID;
 

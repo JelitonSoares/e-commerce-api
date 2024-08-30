@@ -1,7 +1,7 @@
-package com.zex.ecommerce.dtos.product;
+package com.zex.ecommerce.domain.product;
 
-import com.zex.ecommerce.models.product.Category;
-import com.zex.ecommerce.models.product.Product;
+import com.zex.ecommerce.domain.product.Category;
+import com.zex.ecommerce.domain.product.Product;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

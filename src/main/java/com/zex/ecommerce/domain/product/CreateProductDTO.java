@@ -1,11 +1,10 @@
-package com.zex.ecommerce.dtos.product;
+package com.zex.ecommerce.domain.product;
 
-import com.zex.ecommerce.models.product.Category;
+import com.zex.ecommerce.domain.product.Category;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 public record CreateProductDTO(
                                @NotBlank

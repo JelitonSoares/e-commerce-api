@@ -1,6 +1,6 @@
-package com.zex.ecommerce.dtos.client;
+package com.zex.ecommerce.domain.client;
 
-import com.zex.ecommerce.models.client.Address;
+import com.zex.ecommerce.domain.client.Address;
 
 public record DetailsAddressDTO(String publicPlace,
                                 Integer number,

@@ -1,4 +1,4 @@
-package com.zex.ecommerce.models.product;
+package com.zex.ecommerce.domain.product;
 
 public enum Category {
     LIMPEZA,

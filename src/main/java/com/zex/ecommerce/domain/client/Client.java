@@ -1,8 +1,6 @@
-package com.zex.ecommerce.models.client;
+package com.zex.ecommerce.domain.client;
 
-import com.zex.ecommerce.dtos.client.CreateClientDTO;
-import com.zex.ecommerce.dtos.client.UpdateClientDTO;
-import com.zex.ecommerce.models.order.Order;
+import com.zex.ecommerce.domain.order.Order;
 import jakarta.persistence.*;
 import lombok.*;
 

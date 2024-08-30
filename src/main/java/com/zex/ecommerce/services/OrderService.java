@@ -1,10 +1,10 @@
 package com.zex.ecommerce.services;
 
-import com.zex.ecommerce.dtos.order.OrderDTO;
-import com.zex.ecommerce.dtos.order.create.CreateOrderDTO;
-import com.zex.ecommerce.models.client.Client;
-import com.zex.ecommerce.models.order.Order;
-import com.zex.ecommerce.models.ordereditens.OrderedItens;
+import com.zex.ecommerce.domain.order.OrderDTO;
+import com.zex.ecommerce.domain.order.CreateOrderDTO;
+import com.zex.ecommerce.domain.client.Client;
+import com.zex.ecommerce.domain.order.Order;
+import com.zex.ecommerce.domain.ordereditens.OrderedItens;
 import com.zex.ecommerce.repositories.OrderRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;

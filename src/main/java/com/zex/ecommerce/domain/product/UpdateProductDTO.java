@@ -1,4 +1,4 @@
-package com.zex.ecommerce.dtos.product;
+package com.zex.ecommerce.domain.product;
 
 import jakarta.validation.constraints.NotNull;
 

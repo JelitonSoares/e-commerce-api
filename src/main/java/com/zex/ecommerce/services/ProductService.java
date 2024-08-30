@@ -1,22 +1,19 @@
 package com.zex.ecommerce.services;
 
-import com.zex.ecommerce.dtos.product.CreateProductDTO;
-import com.zex.ecommerce.dtos.product.DetailsProductDTO;
-import com.zex.ecommerce.dtos.product.UpdateProductDTO;
-import com.zex.ecommerce.models.product.Product;
+import com.zex.ecommerce.domain.product.CreateProductDTO;
+import com.zex.ecommerce.domain.product.DetailsProductDTO;
+import com.zex.ecommerce.domain.product.UpdateProductDTO;
+import com.zex.ecommerce.domain.product.Product;
 import com.zex.ecommerce.repositories.ProductRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PagedModel;
 import org.springframework.stereotype.Service;
 
 
 import java.time.LocalDate;
-import java.util.List;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class ProductService {

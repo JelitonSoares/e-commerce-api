@@ -1,8 +1,8 @@
 package com.zex.ecommerce.controllers;
 
-import com.zex.ecommerce.dtos.product.CreateProductDTO;
-import com.zex.ecommerce.dtos.product.DetailsProductDTO;
-import com.zex.ecommerce.dtos.product.UpdateProductDTO;
+import com.zex.ecommerce.domain.product.CreateProductDTO;
+import com.zex.ecommerce.domain.product.DetailsProductDTO;
+import com.zex.ecommerce.domain.product.UpdateProductDTO;
 import com.zex.ecommerce.services.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
