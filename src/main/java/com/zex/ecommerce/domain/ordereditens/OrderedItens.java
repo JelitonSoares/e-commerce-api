@@ -22,6 +22,7 @@ public class OrderedItens {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+
     @ManyToOne
     @JoinColumn(name = "order_id")
     private Order order;

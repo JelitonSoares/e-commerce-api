@@ -22,6 +22,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
