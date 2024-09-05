@@ -4,10 +4,13 @@ import com.zex.ecommerce.domain.order.OrderDTO;
 import com.zex.ecommerce.domain.order.CreateOrderDTO;
 import com.zex.ecommerce.domain.client.Client;
 import com.zex.ecommerce.domain.order.Order;
+import com.zex.ecommerce.domain.order.OrderSimplifiedDTO;
 import com.zex.ecommerce.domain.ordereditens.OrderedItens;
 import com.zex.ecommerce.repositories.OrderRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -46,11 +49,10 @@ public class OrderService {
         return new OrderDTO(orderSaved);
     }
 
-    public List<OrderDTO> findAll() {
-        List<Order> orders = this.repository.findAll();
+    public Page<OrderSimplifiedDTO> findAll(Pageable pageable) {
+        Page<Order> orders = this.repository.findAll(pageable);
 
-        return orders.stream()
-                .map(o -> new OrderDTO(o))
-                .collect(Collectors.toList());
+        return orders.map(o -> new OrderSimplifiedDTO(o));
+
     }
 }
