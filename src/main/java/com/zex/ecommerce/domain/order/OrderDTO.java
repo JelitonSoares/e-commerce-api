@@ -1,5 +1,7 @@
 package com.zex.ecommerce.domain.order;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
@@ -10,7 +12,7 @@ public record OrderDTO(UUID id,
                        ClientOrderDTO client,
                        LocalDate orderDate,
                        BigDecimal totalValue,
-                       List<ProductOrderDTO> itemsDTOList) {
+                       @JsonProperty("orderedItems") List<ProductOrderDTO> itemsDTOList) {
 
     public OrderDTO(Order data) {
         this(data.getId(), new ClientOrderDTO(data.getClient()), data.getOrderDate(), data.getTotalValue(),
