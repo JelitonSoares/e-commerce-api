@@ -54,7 +54,7 @@ public class ClientController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<DetailsClientDTO> detais(@PathVariable UUID id) {
+    public ResponseEntity<DetailsClientDTO> details(@PathVariable UUID id) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.details(id));
     }
 }
