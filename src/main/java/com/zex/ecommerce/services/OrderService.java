@@ -25,7 +25,7 @@ public class OrderService {
     private ProductService productService;
 
     @Transactional
-    public OrderDTO create(CreateOrderDTO data) {
+    public DetailsOrderDTO create(CreateOrderDTO data) {
 
         List<OrderedItens> itens = data.products().stream()
                 .map(p -> new OrderedItens(this.productService.getReferenceByID(p.productId()),p.amount()))
@@ -44,18 +44,18 @@ public class OrderService {
 
         Order orderSaved = this.repository.save(order);
 
-        return new OrderDTO(orderSaved);
+        return new DetailsOrderDTO(orderSaved);
     }
 
-    public Page<OrderSimplifiedDTO> findAll(Pageable pageable) {
+    public Page<SimplifiedOrderDTO> findAll(Pageable pageable) {
         Page<Order> orders = this.repository.findAll(pageable);
 
-        return orders.map(o -> new OrderSimplifiedDTO(o));
+        return orders.map(o -> new SimplifiedOrderDTO(o));
 
     }
 
     @Transactional
-    public OrderDTO update(UpdateOrderDTO data) {
+    public DetailsOrderDTO update(UpdateOrderDTO data) {
         Order reference  = this.repository.getReferenceById(data.orderId());
         List<OrderedItens> orderedItems = reference.getOrderedItensList();
 
@@ -67,7 +67,7 @@ public class OrderService {
 
         Order orderUpdated = this.repository.save(reference);
 
-         return new OrderDTO(orderUpdated);
+         return new DetailsOrderDTO(orderUpdated);
     }
 
     @Transactional
