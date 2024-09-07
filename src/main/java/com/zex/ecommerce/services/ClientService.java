@@ -1,9 +1,6 @@
 package com.zex.ecommerce.services;
 
-import com.zex.ecommerce.domain.client.CreateClientDTO;
-import com.zex.ecommerce.domain.client.DetailsClientDTO;
-import com.zex.ecommerce.domain.client.UpdateClientDTO;
-import com.zex.ecommerce.domain.client.Client;
+import com.zex.ecommerce.domain.client.*;
 import com.zex.ecommerce.repositories.ClientRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +25,10 @@ public class ClientService {
     }
 
 
-    public Page<DetailsClientDTO> getAll(Pageable pageable) {
+    public Page<SimplifiedClientDTO> getAll(Pageable pageable) {
         Page<Client> clients = this.repository.findAll(pageable);
 
-        return clients.map(c -> new DetailsClientDTO(c));
+        return clients.map(c -> new SimplifiedClientDTO(c));
     }
 
     @Transactional

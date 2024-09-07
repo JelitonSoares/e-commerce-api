@@ -2,6 +2,7 @@ package com.zex.ecommerce.controllers;
 
 import com.zex.ecommerce.domain.client.CreateClientDTO;
 import com.zex.ecommerce.domain.client.DetailsClientDTO;
+import com.zex.ecommerce.domain.client.SimplifiedClientDTO;
 import com.zex.ecommerce.domain.client.UpdateClientDTO;
 import com.zex.ecommerce.services.ClientService;
 import jakarta.validation.Valid;
@@ -36,7 +37,7 @@ public class ClientController {
 
 
     @GetMapping
-    public ResponseEntity<PagedModel<DetailsClientDTO>> getAll(@PageableDefault(size = 10, sort = {"name"}) Pageable pageable) {
+    public ResponseEntity<PagedModel<SimplifiedClientDTO>> getAll(@PageableDefault(size = 10, sort = {"name"}) Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.getAll(pageable)));
     }
 
