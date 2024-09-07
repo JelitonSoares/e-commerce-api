@@ -1,10 +1,12 @@
 package com.zex.ecommerce.domain.order;
 
 import com.zex.ecommerce.domain.ordereditens.OrderedItens;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 
-public record CreateOrderProductDTO(UUID productId,
+public record CreateOrderProductDTO(@NotNull UUID productId,
+                                    @NotNull
                                     Integer amount) {
 
     public CreateOrderProductDTO(OrderedItens data) {
