@@ -1,10 +1,11 @@
 package com.zex.ecommerce.controllers;
 
 import com.zex.ecommerce.domain.order.CreateOrderDTO;
-import com.zex.ecommerce.domain.order.OrderDTO;
-import com.zex.ecommerce.domain.order.OrderSimplifiedDTO;
+import com.zex.ecommerce.domain.order.DetailsOrderDTO;
+import com.zex.ecommerce.domain.order.SimplifiedOrderDTO;
 import com.zex.ecommerce.domain.order.UpdateOrderDTO;
 import com.zex.ecommerce.services.OrderService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -25,9 +26,9 @@ public class OrderController {
     private OrderService service;
 
     @PostMapping
-    public ResponseEntity<OrderDTO> create(@RequestBody CreateOrderDTO data, UriComponentsBuilder builder) {
+    public ResponseEntity<DetailsOrderDTO> create(@RequestBody @Valid CreateOrderDTO data, UriComponentsBuilder builder) {
 
-        OrderDTO newOrder = this.service.create(data);
+        DetailsOrderDTO newOrder = this.service.create(data);
 
         URI uri = builder.path("/ecommerce/orders/{id}").buildAndExpand(newOrder.id()).toUri();
 
@@ -36,13 +37,13 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<PagedModel<OrderSimplifiedDTO>> findAll(@PageableDefault(size = 10, sort = {"orderDate"}, direction = Sort.Direction.DESC ) Pageable pageable) {
-        return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<OrderSimplifiedDTO>(this.service.findAll(pageable)));
+    public ResponseEntity<PagedModel<SimplifiedOrderDTO>> findAll(@PageableDefault(size = 10, sort = {"orderDate"}, direction = Sort.Direction.DESC ) Pageable pageable) {
+        return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<SimplifiedOrderDTO>(this.service.findAll(pageable)));
     }
 
 
     @PutMapping
-    public ResponseEntity<OrderDTO> update(@RequestBody UpdateOrderDTO data) {
+    public ResponseEntity<DetailsOrderDTO> update(@RequestBody @Valid UpdateOrderDTO data) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.update(data));
     }
 
