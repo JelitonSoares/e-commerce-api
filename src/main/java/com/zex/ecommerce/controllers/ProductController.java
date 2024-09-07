@@ -2,6 +2,7 @@ package com.zex.ecommerce.controllers;
 
 import com.zex.ecommerce.domain.product.CreateProductDTO;
 import com.zex.ecommerce.domain.product.DetailsProductDTO;
+import com.zex.ecommerce.domain.product.SimplifiedProductDTO;
 import com.zex.ecommerce.domain.product.UpdateProductDTO;
 import com.zex.ecommerce.services.ProductService;
 import jakarta.validation.Valid;
@@ -35,7 +36,7 @@ public class ProductController {
 
 
     @GetMapping
-    public ResponseEntity<PagedModel<DetailsProductDTO>> getAll(@PageableDefault(size = 10, sort = {"category"}) Pageable pageable) {
+    public ResponseEntity<PagedModel<SimplifiedProductDTO>> getAll(@PageableDefault(size = 10, sort = {"category"}) Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(new PagedModel(this.service.getAll(pageable)));
     }
 

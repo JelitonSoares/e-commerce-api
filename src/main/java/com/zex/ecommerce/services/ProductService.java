@@ -1,9 +1,6 @@
 package com.zex.ecommerce.services;
 
-import com.zex.ecommerce.domain.product.CreateProductDTO;
-import com.zex.ecommerce.domain.product.DetailsProductDTO;
-import com.zex.ecommerce.domain.product.UpdateProductDTO;
-import com.zex.ecommerce.domain.product.Product;
+import com.zex.ecommerce.domain.product.*;
 import com.zex.ecommerce.repositories.ProductRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,10 +26,10 @@ public class ProductService {
     }
 
 
-    public Page<DetailsProductDTO> getAll(Pageable pageable) {
+    public Page<SimplifiedProductDTO> getAll(Pageable pageable) {
         Page<Product> products = this.repository.findAll(pageable);
 
-        return products.map(p -> new DetailsProductDTO(p));
+        return products.map(p -> new SimplifiedProductDTO(p));
     }
 
     @Transactional
