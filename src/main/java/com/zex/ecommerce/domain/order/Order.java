@@ -47,6 +47,11 @@ public class Order {
         this.orderedItensList.add(itens);
     }
 
+    public void updateTotalValue() {
+        this.totalValue = BigDecimal.ZERO;
+        this.orderedItensList.forEach(o -> this.totalValue = totalValue.add(o.totalValue()));
+    }
+
     public void setOrderedItensList(List<OrderedItens> itens) {
         itens.forEach(i -> i.setOrder(this));
         this.orderedItensList = itens;
