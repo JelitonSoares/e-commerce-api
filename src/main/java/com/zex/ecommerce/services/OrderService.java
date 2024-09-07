@@ -77,4 +77,10 @@ public class OrderService {
 
         this.repository.delete(reference);
     }
+
+    public DetailsOrderDTO details(UUID id) {
+        Order reference = this.repository.getReferenceById(id);
+
+        return new DetailsOrderDTO(reference);
+    }
 }

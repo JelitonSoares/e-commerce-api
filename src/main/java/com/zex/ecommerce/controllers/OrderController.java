@@ -52,4 +52,10 @@ public class OrderController {
         this.service.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DetailsOrderDTO> details(@PathVariable UUID id) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.service.details(id));
+    }
 }
