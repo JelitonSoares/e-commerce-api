@@ -1,10 +1,7 @@
 package com.zex.ecommerce.services;
 
-import com.zex.ecommerce.domain.order.OrderDTO;
-import com.zex.ecommerce.domain.order.CreateOrderDTO;
+import com.zex.ecommerce.domain.order.*;
 import com.zex.ecommerce.domain.client.Client;
-import com.zex.ecommerce.domain.order.Order;
-import com.zex.ecommerce.domain.order.OrderSimplifiedDTO;
 import com.zex.ecommerce.domain.ordereditens.OrderedItens;
 import com.zex.ecommerce.repositories.OrderRepository;
 import jakarta.transaction.Transactional;
@@ -15,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -54,5 +52,29 @@ public class OrderService {
 
         return orders.map(o -> new OrderSimplifiedDTO(o));
 
+    }
+
+    @Transactional
+    public OrderDTO update(UpdateOrderDTO data) {
+        Order reference  = this.repository.getReferenceById(data.orderId());
+        List<OrderedItens> orderedItems = reference.getOrderedItensList();
+
+         orderedItems.stream()
+                .filter(items -> items.getProduct().getId().equals(data.productId()))
+                .forEach(items -> items.setAmount(data.amount()));
+
+        reference.updateTotalValue();
+
+        Order orderUpdated = this.repository.save(reference);
+
+         return new OrderDTO(orderUpdated);
+    }
+
+    @Transactional
+    public void delete(UUID id){
+        Order reference = this.repository.getReferenceById(id);
+
+
+        this.repository.delete(reference);
     }
 }
