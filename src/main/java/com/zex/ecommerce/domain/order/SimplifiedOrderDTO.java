@@ -4,13 +4,13 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
-public record OrderSimplifiedDTO(UUID orderId,
+public record SimplifiedOrderDTO(UUID orderId,
                                  String clientName,
                                  LocalDate orderDate,
                                  BigDecimal totalValue) {
 
 
-    public OrderSimplifiedDTO(Order order) {
+    public SimplifiedOrderDTO(Order order) {
         this(order.getId(), order.getClient().getName(), order.getOrderDate(), order.getTotalValue());
     }
 }
