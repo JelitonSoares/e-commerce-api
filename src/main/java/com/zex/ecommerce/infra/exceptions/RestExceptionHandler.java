@@ -43,5 +43,8 @@ public class RestExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ExceptionMessage(exception.getMessage(), HttpStatus.NOT_FOUND));
     }
 
-
+    @ExceptionHandler(ProductStockException.class)
+    public ResponseEntity<ExceptionMessage> productStockHandler(ProductStockException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ExceptionMessage(exception.getMessage(), HttpStatus.BAD_REQUEST));
+    }
 }
