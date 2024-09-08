@@ -1,6 +1,7 @@
 package com.zex.ecommerce.domain.product;
 
 import com.zex.ecommerce.domain.ordereditens.OrderedItens;
+import com.zex.ecommerce.infra.exceptions.ProductStockException;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -81,6 +82,11 @@ public class Product {
     }
 
     public void updateStock(Integer amount) {
-        this.stock = stock - amount;
+
+        if (this.stock > amount) {
+            this.stock = stock - amount;
+        }
+
+        throw new ProductStockException("insufficient products in stock/" + " in stock: " + this.stock + ", amount: " + amount);
     }
 }
