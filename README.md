@@ -10,4 +10,19 @@ A personal e-commerce project, where you can simulate your purchases. register c
 * [*SpringBoot*](https://docs.spring.io/spring-boot/index.html)
 * [*Maven*](https://maven.apache.org/guides/index.html)
 * [*MySQL*](https://dev.mysql.com/doc/)
+* [*ChatGPT*](https://chatgpt.com/g/g-mlCY3phIA-docs-gpt)
+
+## Running Locally:
+clone the project
+```
+  git clone https://https://github.com/JelitonSoares/e-commerce-api.git
+```
+
+You will need:
+* Java 17+
+* MySQL 8+
+* IDE (of your preference>
+* Postman/Imsomnia to test
+
+
 
