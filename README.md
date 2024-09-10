@@ -88,3 +88,57 @@ The program will return a JSON in the response body, containing the saved and de
 |Status Code             | Location Header (example)                                                                |
 |:-----------------------|:--------------------------------------------------------------------------------|
 |201 (CREATED)           | "https://localhost:8080/ecommerce/products/d108275e-7d76-4893-b13f-a64c98e3e173"|
+
+##  🔎 Get All Products
+
+All database records will be returned. The project uses a pagination system to optimize HTTP responses, so on each page the system will return 10 products. In this request, the products are displayed in a simplified way, containing only the fields: id, name and description. If you want to see them in detail, use the endpoint to detail a product.
+
+
+### ✏️ Request:
+
+``` http
+GET /ecommerce/products
+```
+
+### 🕙 Response:
+
+A pagination JSON will be returned with some fields:
+"content" which contains a list of all records on that page and "page" which contains information about the page such as the number of records per page, current page number, total number of elements (products) in database and the total number of pages
+
+#### Body:
+```
+{
+    "content": [
+        {
+            "id": "d108275e-7d76-4893-b13f-a64c98e3e173",
+            "name": "Espuma de Limpeza Facial Revitalizante Lumina 150ml",
+            "description": "Espuma de limpeza facial com microbolhas revitalizantes, que removem impurezas e células mortas, deixando a pele macia e luminosa."
+        }
+    ],
+    "page": {
+        "size": 10,
+        "number": 0,
+        "totalElements": 1,
+        "totalPages": 1
+    }
+}
+```
+### 📃 Pagination:
+
+Pagination allows the user to customize the response, for example, instead of 10 records per page, it can be configured for 5 or 20 records. Here are some examples of pagination parameters:
+
+Changes the number of records per page:
+```http
+GET /ecommerce/products?size=5
+```
+Changes the number of page:
+```http
+GET /ecommerce/products?page=1
+```
+among other parameters that can be used to customize API responses.
+
+for more information visit: https://docs.spring.io/spring-hateoas/docs/current/reference/html/#preface
+
+|Status Code             |
+|:-----------------------|
+|200 (OK)                | 
