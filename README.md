@@ -87,7 +87,7 @@ The program will return a JSON in the response body, containing the saved and de
 ```
 |Status Code             | Location Header (example)                                                                |
 |:-----------------------|:--------------------------------------------------------------------------------|
-|201 (CREATED)           | "https://localhost:8080/ecommerce/products/d108275e-7d76-4893-b13f-a64c98e3e173"|
+|201 (CREATED)      ✔️  | "https://localhost:8080/ecommerce/products/d108275e-7d76-4893-b13f-a64c98e3e173"|
 
 ##  🔎 Get All Products
 
@@ -141,4 +141,118 @@ for more information visit: https://docs.spring.io/spring-hateoas/docs/current/r
 
 |Status Code             |
 |:-----------------------|
-|200 (OK)                | 
+|200 (OK)         ✔️    | 
+
+
+
+##  📝 Details a Product
+
+Returns the detailed product based on the ID provided, here you can see the product with all its information, including the date of registration in the database.
+
+
+### ✏️ Request:
+
+``` http
+GET /ecommerce/products/{id}
+```
+
+| Parameter   | Type       | Description                                   |
+| :---------- | :--------- | :------------------------------------------   |
+| `ID`        | `STRING`   | **Mandatory**. The ID of the product you want |
+
+### 🕙 Response:
+
+The detailed product with the informed ID will be returned, unlike the GET ALL PRODUCTS request, here the product comes with all its attributes including its registration date in the database, this request serves for the user to consult prices and the quantity available in stock.
+
+#### Body:
+```
+{
+    "id": "d108275e-7d76-4893-b13f-a64c98e3e173",
+    "name": "Espuma de Limpeza Facial Revitalizante Lumina 150ml",
+    "description": "Espuma de limpeza facial com microbolhas revitalizantes, que removem impurezas e células mortas, deixando a pele macia e luminosa.",
+    "value": 39.90,
+    "stock": 30,
+    "category": "HIGIENE",
+    "registerDate": "2024-09-09"
+}
+```
+
+|Status Code             |
+|:-----------------------|
+|200 (OK)   ✔️           | 
+
+
+
+## ♻️ Update a Product
+
+Allows you to update some fields of a product, such as: name, description, value and stock.
+The product ID is mandatory, to identify which product will be updated.
+
+
+### ✏️ Request:
+
+``` http
+PUT /ecommerce/products
+```
+
+#### Body:
+```
+{
+   "id": "d108275e-7d76-4893-b13f-a64c98e3e173",
+   "stock": 25
+}
+```
+
+Example of how the product's stock value could be updated.(Remember the ID is mandatory and without it the product will not be updated).
+
+
+### 🕙 Response:
+
+
+A JSON with the detailed product will be returned, so that the user can check the changes made.
+
+
+#### Body:
+```
+{
+    "id": "d108275e-7d76-4893-b13f-a64c98e3e173",
+    "name": "Espuma de Limpeza Facial Revitalizante Lumina 150ml",
+    "description": "Espuma de limpeza facial com microbolhas revitalizantes, que removem impurezas e células mortas, deixando a pele macia e luminosa.",
+    "value": 39.90,
+    "stock": 55,
+    "category": "HIGIENE",
+    "registerDate": "2024-09-09"
+}
+```
+|Status Code             |
+|:-----------------------|
+|200 (OK)   ✔️           | 
+
+
+
+## ❌ Delete a Product
+
+
+Allows us to delete a specific product from the database based on its ID.
+
+***ATENTTION:*** ***The product will be permanently deleted***
+
+### ✏️ Request:
+
+``` http
+DELETE /ecommerce/products/{id}
+```
+
+| Parameter   | Type       | Description                                   |
+| :---------- | :--------- | :------------------------------------------   |
+| `ID`        | `STRING`   | **Mandatory**. The ID of the product you want to delete  |
+
+### 🕙 Response:
+
+Only HTTP Status 204 NO CONTENT will be returned.
+
+
+|Status Code             |
+|:-----------------------|
+|204 (NO_CONTENT)   ✔️           | 
+
