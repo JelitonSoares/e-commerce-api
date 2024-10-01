@@ -256,7 +256,7 @@ Only HTTP Status 204 NO CONTENT will be returned.
 |:----------------------------|
 | 204 (NO_CONTENT)   ✔️       | 
 
-# 🛍️ Clients Endpoints:
+# 👨‍💼 Clients Endpoints:
 Clients follow the same logic as products, they are a fundamental part of the project, after all, without clients we cannot assemble orders!!
 
 ## 🌟 Create a Client
