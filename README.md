@@ -397,3 +397,79 @@ The detailed client with the informed ID will be returned, unlike the GET ALL CL
 |Status Code             |
 |:-----------------------|
 |200 (OK)   ✔️           | 
+
+## ♻️ Update a Client
+
+Allows you to update the address of clients, such as: public place, number, neighborhood, city, uf, cep and complement.
+You can change one field at a time or all at once.
+The others fields such as name and document cannot be changed.The client ID is mandatory, to identify which client will be updated.
+
+
+### ✏️ Request:
+
+``` http
+PUT /ecommerce/clients
+```
+
+#### Body:
+```
+{
+   "id": "91d2cd74-e7f8-4fcb-8465-cf95dc3550ab",
+   "address": {
+        "number": 6
+    }
+}
+```
+
+Example of how the client's address could be updated.(Remember the ID is mandatory and without it the client will not be updated).
+
+
+### 🕙 Response:
+
+
+A JSON with the detailed client will be returned, so that the user can check the changes made.
+
+
+#### Body:
+```
+{
+    "id": "91d2cd74-e7f8-4fcb-8465-cf95dc3550ab",
+    "name": "Aquilino Strovani",
+    "document": "98017253476",
+    "address": {
+        "publicPlace": "Viela Horizonte Pálido",
+        "number": 6,
+        "neighborhood": "Vale dos Sussurros",
+        "city": "Monte do Luar",
+        "uf": "RO",
+        "cep": "74820199",
+        "complement": null
+    }
+}
+```
+|Status Code             |
+|:-----------------------|
+|200 (OK)   ✔️           | 
+
+
+
+## ❌ Delete a Client
+
+
+Allows us to delete a specific client from the database based on its ID.
+
+***ATENTTION:*** ***The client will be permanently deleted***
+
+### ✏️ Request:
+
+``` http
+DELETE /ecommerce/client/{id}
+```
+
+| Parameter   | Type       | Description                                            |
+| :---------- | :--------- |:-------------------------------------------------------|
+| `ID`        | `STRING`   | **Mandatory**. The ID of the client you want to delete |
+
+### 🕙 Response:
+
+Only HTTP Status 204 NO CONTENT will be returned.
