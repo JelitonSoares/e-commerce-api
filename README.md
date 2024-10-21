@@ -481,84 +481,99 @@ Orders are the main part of the project, they encompass the products and custome
 ## 🌟 Create a Order.
 
 A order is composed of the following fields:
-name, document and address
-* name: is the own name
-* document: it is the document that identifies the client's physical person (similar to the CPF in Brazil)
-* address: the address is composed of some other fields such as, public place, number, neighborhood, city, uf, cep and complement.
+ID, Client, OrderDate, TotalValue anda Items.
+* ID: Is the ID of order.
+* CLIENT: Represents the customer who made the order, has subfields to identify the customer, such as: ID, Name and Document.
+* ORDER DATE: Represents the date the order was made.
+* TOTAL VALUE: Representes the total value of order.
+* ITEMS: A list with all the items in this order, each of these items has subfields to identify them such as: ID, Name, Amount and Unitary Value.
+
 
 
 ### ✏️ Request:
 
 ``` http
-POST /ecommerce/clients
+POST /ecommerce/orders
 ```
 
 
 #### Body:
 ```
 {
-    "name": "Aquilino Strovani",
-    "document": "98017253476",
-    "address": {
-        "publicPlace": "Viela Horizonte Pálido",
-        "neighborhood": "Vale dos Sussurros",
-        "city": "Monte do Luar",
-        "uf": "RO",
-        "cep": "74820199",
-        "number": 417
-    }
+    "clientId": "9f90b06f-1ab6-46a6-ae19-0fb46d13ce61",
+    "products": [
+        {
+            "productId": "ffc51ca8-9da0-47e1-83c1-d71534ed619e",
+            "amount": 3
+        },
+        {
+            "productId": "d108275e-7d76-4893-b13f-a64c98e3e173",
+            "amount": 2
+        }
+    ]
 }
 ```
 
 ### 🕙 Response:
 
-The program will return a JSON in the response body, containing the saved and detailed client, with the code 201 (CREATED) and the LOCATION field in the response header.
+The program will return a JSON in the response body, containing the saved and detailed order, with the code 201 (CREATED) and the LOCATION field in the response header.
 
 #### Body:
 ```
 {
-    "id": "91d2cd74-e7f8-4fcb-8465-cf95dc3550ab",
-    "name": "Aquilino Strovani",
-    "document": "98017253476",
-    "address": {
-        "publicPlace": "Viela Horizonte Pálido",
-        "number": 417,
-        "neighborhood": "Vale dos Sussurros",
-        "city": "Monte do Luar",
-        "uf": "RO",
-        "cep": "74820199",
-        "complement": null
-    }
+    "id": "368c6b7c-1cb5-410c-b6d5-8e69e36d0287",
+    "client": {
+        "id": "9f90b06f-1ab6-46a6-ae19-0fb46d13ce61",
+        "name": "Aquilino Strovani",
+        "document": "98017253476"
+    },
+    "orderDate": "2024-10-21",
+    "totalValue": 93.30,
+    "orderedItems": [
+        {
+            "id": "ffc51ca8-9da0-47e1-83c1-d71534ed619e",
+            "name": "Zambimba Óleo de Soja",
+            "amount": 3,
+            "unitaryValue": 4.50
+        },
+        {
+            "id": "d108275e-7d76-4893-b13f-a64c98e3e173",
+            "name": "Espuma de Limpeza Facial Revitalizante Lumina 150ml",
+            "amount": 2,
+            "unitaryValue": 39.90
+        }
+    ]
 }
 ```
 |Status Code             | Location Header (example)                                                       |
 |:-----------------------|:--------------------------------------------------------------------------------|
-|201 (CREATED)      ✔️  | "https://localhost:8080/ecommerce/clients/91d2cd74-e7f8-4fcb-8465-cf95dc3550ab" |
+|201 (CREATED)      ✔️  | "https://localhost:8080/ecommerce/orders/368c6b7c-1cb5-410c-b6d5-8e69e36d0287" |
 
-##  🔎 Get All Clients
+##  🔎 Get All Orders.
 
-All database records will be returned. The project uses a pagination system to optimize HTTP responses, so on each page the system will return 10 clients. In this request, the clients are displayed in a simplified way, containing only the fields: id, name and document. If you want to see them in detail, use the endpoint to detail a client.
+All database records will be returned. The project uses a pagination system to optimize HTTP responses, so on each page the system will return 10 orders. In this request, the orders are displayed in a simplified way, containing only the fields: id, client name, order date and total value. If you want to see them in detail, use the endpoint to detail a order.
 
 
 ### ✏️ Request:
 
 ``` http
-GET /ecommerce/clients
+GET /ecommerce/orders
 ```
 
 ### 🕙 Response:
 
 A pagination JSON will be returned with some fields:
-"content" which contains a list of all records on that page and "page" which contains information about the page such as the number of records per page, current page number, total number of elements (clients) in database and the total number of pages
+"content" which contains a list of all records on that page and "page" which contains information about the page such as the number of records per page, current page number, total number of elements (orders) in database and the total number of pages.
 
 #### Body:
 ```
 {
     "content": [
         {
-            "id": "91d2cd74-e7f8-4fcb-8465-cf95dc3550ab",
-            "name": "Aquilino Strovani",
-            "document": "98017253476"
+            "orderId": "368c6b7c-1cb5-410c-b6d5-8e69e36d0287",
+            "clientName": "Aquilino Strovani",
+            "orderDate": "2024-10-21",
+            "totalValue": 93.30
         }
     ],
     "page": {
@@ -576,40 +591,50 @@ A pagination JSON will be returned with some fields:
 
 
 
-##  📝 Details a Client
+##  📝 Details a Order.
 
-Returns the detailed client based on the ID provided, here you can see the client with all its information, including your address.
+Returns the detailed order based on the ID provided, here you can see the order with all its information.
 
 
 ### ✏️ Request:
 
 ``` http
-GET /ecommerce/clients/{id}
+GET /ecommerce/orders/{id}
 ```
 
 | Parameter   | Type       | Description                                  |
 | :---------- | :--------- |:---------------------------------------------|
-| `ID`        | `STRING`   | **Mandatory**. The ID of the client you want |
+| `ID`        | `STRING`   | **Mandatory**. The ID of the order you want |
 
 ### 🕙 Response:
 
-The detailed client with the informed ID will be returned, unlike the GET ALL CLIENTS request, here the client comes with all its attributes including your address.
+The detailed order with the informed ID will be returned, unlike the GET ALL ORDER request, here the order comes with all its attributes..
 
 #### Body:
 ```
 {
-    "id": "91d2cd74-e7f8-4fcb-8465-cf95dc3550ab",
-    "name": "Aquilino Strovani",
-    "document": "98017253476",
-    "address": {
-        "publicPlace": "Viela Horizonte Pálido",
-        "number": 417,
-        "neighborhood": "Vale dos Sussurros",
-        "city": "Monte do Luar",
-        "uf": "RO",
-        "cep": "74820199",
-        "complement": null
-    }
+    "id": "368c6b7c-1cb5-410c-b6d5-8e69e36d0287",
+    "client": {
+        "id": "9f90b06f-1ab6-46a6-ae19-0fb46d13ce61",
+        "name": "Aquilino Strovani",
+        "document": "98017253476"
+    },
+    "orderDate": "2024-10-21",
+    "totalValue": 93.30,
+    "items": [
+        {
+            "id": "d108275e-7d76-4893-b13f-a64c98e3e173",
+            "name": "Espuma de Limpeza Facial Revitalizante Lumina 150ml",
+            "amount": 2,
+            "unitaryValue": 39.90
+        },
+        {
+            "id": "ffc51ca8-9da0-47e1-83c1-d71534ed619e",
+            "name": "Zambimba Óleo de Soja",
+            "amount": 3,
+            "unitaryValue": 4.50
+        }
+    ]
 }
 ```
 
@@ -619,51 +644,59 @@ The detailed client with the informed ID will be returned, unlike the GET ALL CL
 
 ## ♻️ Update a Client
 
-Allows you to update the address of clients, such as: public place, number, neighborhood, city, uf, cep and complement.
-You can change one field at a time or all at once.
-The others fields such as name and document cannot be changed.The client ID is mandatory, to identify which client will be updated.
+Allows you to update only the products and your amount.
+The others fields cannot be changed.The order ID is mandatory, to identify which order will be updated.
 
 
 ### ✏️ Request:
 
 ``` http
-PUT /ecommerce/clients
+PUT /ecommerce/orders
 ```
 
 #### Body:
 ```
 {
-   "id": "91d2cd74-e7f8-4fcb-8465-cf95dc3550ab",
-   "address": {
-        "number": 6
-    }
+    "orderId": "368c6b7c-1cb5-410c-b6d5-8e69e36d0287",
+    "productId": "d108275e-7d76-4893-b13f-a64c98e3e173",
+    "amount": "3"
 }
 ```
 
-Example of how the client's address could be updated.(Remember the ID is mandatory and without it the client will not be updated).
+Example of how the order could be updated.(Remember the ID is mandatory and without it the order will not be updated).
 
 
 ### 🕙 Response:
 
 
-A JSON with the detailed client will be returned, so that the user can check the changes made.
+A JSON with the detailed order will be returned, so that the user can check the changes made.
 
 
 #### Body:
 ```
 {
-    "id": "91d2cd74-e7f8-4fcb-8465-cf95dc3550ab",
-    "name": "Aquilino Strovani",
-    "document": "98017253476",
-    "address": {
-        "publicPlace": "Viela Horizonte Pálido",
-        "number": 6,
-        "neighborhood": "Vale dos Sussurros",
-        "city": "Monte do Luar",
-        "uf": "RO",
-        "cep": "74820199",
-        "complement": null
-    }
+    "id": "368c6b7c-1cb5-410c-b6d5-8e69e36d0287",
+    "client": {
+        "id": "9f90b06f-1ab6-46a6-ae19-0fb46d13ce61",
+        "name": "Aquilino Strovani",
+        "document": "98017253476"
+    },
+    "orderDate": "2024-10-21",
+    "totalValue": 133.20,
+    "items": [
+        {
+            "id": "d108275e-7d76-4893-b13f-a64c98e3e173",
+            "name": "Espuma de Limpeza Facial Revitalizante Lumina 150ml",
+            "amount": 3,
+            "unitaryValue": 39.90
+        },
+        {
+            "id": "ffc51ca8-9da0-47e1-83c1-d71534ed619e",
+            "name": "Zambimba Óleo de Soja",
+            "amount": 3,
+            "unitaryValue": 4.50
+        }
+    ]
 }
 ```
 |Status Code             |
@@ -672,22 +705,22 @@ A JSON with the detailed client will be returned, so that the user can check the
 
 
 
-## ❌ Delete a Client
+## ❌ Delete a Client.
 
 
-Allows us to delete a specific client from the database based on its ID.
+Allows us to delete a specific order from the database based on its ID.
 
-***ATENTTION:*** ***The client will be permanently deleted***
+***ATENTTION:*** ***The order will be permanently deleted***
 
 ### ✏️ Request:
 
 ``` http
-DELETE /ecommerce/client/{id}
+DELETE /ecommerce/orders/{id}
 ```
 
 | Parameter   | Type       | Description                                            |
 | :---------- | :--------- |:-------------------------------------------------------|
-| `ID`        | `STRING`   | **Mandatory**. The ID of the client you want to delete |
+| `ID`        | `STRING`   | **Mandatory**. The ID of the order you want to delete |
 
 ### 🕙 Response:
 
