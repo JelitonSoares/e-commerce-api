@@ -256,12 +256,231 @@ Only HTTP Status 204 NO CONTENT will be returned.
 |:----------------------------|
 | 204 (NO_CONTENT)   ✔️       | 
 
-# 👨‍💼 Clients Endpoints:
+wi# 👨‍💼 Clients Endpoints:
 Clients follow the same logic as products, they are a fundamental part of the project, after all, without clients we cannot assemble orders!!
 
 ## 🌟 Create a Client
 
 A client is composed of the following fields:
+name, document and address
+* name: is the own name
+* document: it is the document that identifies the client's physical person (similar to the CPF in Brazil)
+* address: the address is composed of some other fields such as, public place, number, neighborhood, city, uf, cep and complement.
+
+
+### ✏️ Request:
+
+``` http
+POST /ecommerce/clients
+```
+
+
+#### Body:
+```
+{
+    "name": "Aquilino Strovani",
+    "document": "98017253476",
+    "address": {
+        "publicPlace": "Viela Horizonte Pálido",
+        "neighborhood": "Vale dos Sussurros",
+        "city": "Monte do Luar",
+        "uf": "RO",
+        "cep": "74820199",
+        "number": 417
+    }
+}
+```
+
+### 🕙 Response:
+
+The program will return a JSON in the response body, containing the saved and detailed client, with the code 201 (CREATED) and the LOCATION field in the response header.
+
+#### Body:
+```
+{
+    "id": "91d2cd74-e7f8-4fcb-8465-cf95dc3550ab",
+    "name": "Aquilino Strovani",
+    "document": "98017253476",
+    "address": {
+        "publicPlace": "Viela Horizonte Pálido",
+        "number": 417,
+        "neighborhood": "Vale dos Sussurros",
+        "city": "Monte do Luar",
+        "uf": "RO",
+        "cep": "74820199",
+        "complement": null
+    }
+}
+```
+|Status Code             | Location Header (example)                                                       |
+|:-----------------------|:--------------------------------------------------------------------------------|
+|201 (CREATED)      ✔️  | "https://localhost:8080/ecommerce/clients/91d2cd74-e7f8-4fcb-8465-cf95dc3550ab" |
+
+##  🔎 Get All Clients
+
+All database records will be returned. The project uses a pagination system to optimize HTTP responses, so on each page the system will return 10 clients. In this request, the clients are displayed in a simplified way, containing only the fields: id, name and document. If you want to see them in detail, use the endpoint to detail a client.
+
+
+### ✏️ Request:
+
+``` http
+GET /ecommerce/clients
+```
+
+### 🕙 Response:
+
+A pagination JSON will be returned with some fields:
+"content" which contains a list of all records on that page and "page" which contains information about the page such as the number of records per page, current page number, total number of elements (clients) in database and the total number of pages
+
+#### Body:
+```
+{
+    "content": [
+        {
+            "id": "91d2cd74-e7f8-4fcb-8465-cf95dc3550ab",
+            "name": "Aquilino Strovani",
+            "document": "98017253476"
+        }
+    ],
+    "page": {
+        "size": 10,
+        "number": 0,
+        "totalElements": 1,
+        "totalPages": 1
+    }
+}
+```
+
+|Status Code             |
+|:-----------------------|
+|200 (OK)         ✔️    | 
+
+
+
+##  📝 Details a Client
+
+Returns the detailed client based on the ID provided, here you can see the client with all its information, including your address.
+
+
+### ✏️ Request:
+
+``` http
+GET /ecommerce/clients/{id}
+```
+
+| Parameter   | Type       | Description                                  |
+| :---------- | :--------- |:---------------------------------------------|
+| `ID`        | `STRING`   | **Mandatory**. The ID of the client you want |
+
+### 🕙 Response:
+
+The detailed client with the informed ID will be returned, unlike the GET ALL CLIENTS request, here the client comes with all its attributes including your address.
+
+#### Body:
+```
+{
+    "id": "91d2cd74-e7f8-4fcb-8465-cf95dc3550ab",
+    "name": "Aquilino Strovani",
+    "document": "98017253476",
+    "address": {
+        "publicPlace": "Viela Horizonte Pálido",
+        "number": 417,
+        "neighborhood": "Vale dos Sussurros",
+        "city": "Monte do Luar",
+        "uf": "RO",
+        "cep": "74820199",
+        "complement": null
+    }
+}
+```
+
+|Status Code             |
+|:-----------------------|
+|200 (OK)   ✔️           | 
+
+## ♻️ Update a Client
+
+Allows you to update the address of clients, such as: public place, number, neighborhood, city, uf, cep and complement.
+You can change one field at a time or all at once.
+The others fields such as name and document cannot be changed.The client ID is mandatory, to identify which client will be updated.
+
+
+### ✏️ Request:
+
+``` http
+PUT /ecommerce/clients
+```
+
+#### Body:
+```
+{
+   "id": "91d2cd74-e7f8-4fcb-8465-cf95dc3550ab",
+   "address": {
+        "number": 6
+    }
+}
+```
+
+Example of how the client's address could be updated.(Remember the ID is mandatory and without it the client will not be updated).
+
+
+### 🕙 Response:
+
+
+A JSON with the detailed client will be returned, so that the user can check the changes made.
+
+
+#### Body:
+```
+{
+    "id": "91d2cd74-e7f8-4fcb-8465-cf95dc3550ab",
+    "name": "Aquilino Strovani",
+    "document": "98017253476",
+    "address": {
+        "publicPlace": "Viela Horizonte Pálido",
+        "number": 6,
+        "neighborhood": "Vale dos Sussurros",
+        "city": "Monte do Luar",
+        "uf": "RO",
+        "cep": "74820199",
+        "complement": null
+    }
+}
+```
+|Status Code             |
+|:-----------------------|
+|200 (OK)   ✔️           | 
+
+
+
+## ❌ Delete a Client
+
+
+Allows us to delete a specific client from the database based on its ID.
+
+***ATENTTION:*** ***The client will be permanently deleted***
+
+### ✏️ Request:
+
+``` http
+DELETE /ecommerce/client/{id}
+```
+
+| Parameter   | Type       | Description                                            |
+| :---------- | :--------- |:-------------------------------------------------------|
+| `ID`        | `STRING`   | **Mandatory**. The ID of the client you want to delete |
+
+### 🕙 Response:
+
+Only HTTP Status 204 NO CONTENT ll be returned.
+
+# 🛒 Orders Endpoints:
+
+Orders are the main part of the project, they encompass the products and customers. We will see how to assemble an order.
+
+## 🌟 Create a Order.
+
+A order is composed of the following fields:
 name, document and address
 * name: is the own name
 * document: it is the document that identifies the client's physical person (similar to the CPF in Brazil)
