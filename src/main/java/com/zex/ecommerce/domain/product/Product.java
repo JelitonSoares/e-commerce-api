@@ -83,10 +83,10 @@ public class Product {
 
     public void updateStock(Integer amount) {
 
-        if (this.stock > amount) {
-            this.stock = stock - amount;
+        if (this.stock < amount) {
+            throw new ProductStockException("insufficient products in stock/" + " in stock: " + this.stock + ", amount: " + amount);
         }
 
-        throw new ProductStockException("insufficient products in stock/" + " in stock: " + this.stock + ", amount: " + amount);
+        this.stock = stock - amount;
     }
 }
