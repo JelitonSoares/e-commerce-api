@@ -256,7 +256,7 @@ Only HTTP Status 204 NO CONTENT will be returned.
 |:----------------------------|
 | 204 (NO_CONTENT)   ✔️       | 
 
-wi# 👨‍💼 Clients Endpoints:
+# 👨‍💼 Clients Endpoints:
 Clients follow the same logic as products, they are a fundamental part of the project, after all, without clients we cannot assemble orders!!
 
 ## 🌟 Create a Client
@@ -642,7 +642,7 @@ The detailed order with the informed ID will be returned, unlike the GET ALL ORD
 |:-----------------------|
 |200 (OK)   ✔️           | 
 
-## ♻️ Update a Client
+## ♻️ Update a Order
 
 Allows you to update only the products and your amount.
 The others fields cannot be changed.The order ID is mandatory, to identify which order will be updated.
@@ -705,7 +705,7 @@ A JSON with the detailed order will be returned, so that the user can check the 
 
 
 
-## ❌ Delete a Client.
+## ❌ Delete a Order.
 
 
 Allows us to delete a specific order from the database based on its ID.
@@ -725,3 +725,8 @@ DELETE /ecommerce/orders/{id}
 ### 🕙 Response:
 
 Only HTTP Status 204 NO CONTENT will be returned.
+
+
+# 🍀 Documentation Endpoint:
+
+For accurate documentation of all the application's features, access the "/swagger-ui.html" endpoint. There you will find all the endpoints and the information needed to perform them.
