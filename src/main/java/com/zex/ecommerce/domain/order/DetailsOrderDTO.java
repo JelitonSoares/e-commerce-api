@@ -12,7 +12,7 @@ public record DetailsOrderDTO(UUID id,
                               DetailsClientOrderDTO client,
                               LocalDate orderDate,
                               BigDecimal totalValue,
-                              @JsonProperty("orderedItems") List<DetailsProductOrderDTO> itemsDTOList) {
+                              @JsonProperty("items") List<DetailsProductOrderDTO> itemsDTOList) {
 
     public DetailsOrderDTO(Order data) {
         this(data.getId(), new DetailsClientOrderDTO(data.getClient()), data.getOrderDate(), data.getTotalValue(),
