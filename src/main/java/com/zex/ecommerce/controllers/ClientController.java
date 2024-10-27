@@ -5,6 +5,7 @@ import com.zex.ecommerce.domain.client.DetailsClientDTO;
 import com.zex.ecommerce.domain.client.SimplifiedClientDTO;
 import com.zex.ecommerce.domain.client.UpdateClientDTO;
 import com.zex.ecommerce.services.ClientService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -26,6 +27,7 @@ public class ClientController {
     private ClientService service;
 
     @PostMapping
+    @Operation(summary = "Create a Client")
     public ResponseEntity<DetailsClientDTO> create(@RequestBody @Valid CreateClientDTO data, UriComponentsBuilder builder) {
         DetailsClientDTO client = this.service.create(data);
 
@@ -37,16 +39,19 @@ public class ClientController {
 
 
     @GetMapping
+    @Operation(summary = "List all clients")
     public ResponseEntity<PagedModel<SimplifiedClientDTO>> getAll(@PageableDefault(size = 10, sort = {"name"}) Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.getAll(pageable)));
     }
 
     @PutMapping
+    @Operation(summary = "Update a client")
     public ResponseEntity<DetailsClientDTO> update(@RequestBody @Valid UpdateClientDTO data) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.update(data));
     }
 
     @DeleteMapping("{id}")
+    @Operation(summary = "Delete a client")
     public ResponseEntity delete(@PathVariable UUID id) {
         this.service.delete(id);
 
@@ -55,6 +60,7 @@ public class ClientController {
 
 
     @GetMapping("/{id}")
+    @Operation(summary = "Detail a client by ID")
     public ResponseEntity<DetailsClientDTO> details(@PathVariable UUID id) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.details(id));
     }
