@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 
-public record UpdateOrderDTO(@NotNull UUID orderId,
+public record UpdateOrderDTO(@NotNull String orderId,
                              @NotNull
                              UUID productId,
                              @NotNull

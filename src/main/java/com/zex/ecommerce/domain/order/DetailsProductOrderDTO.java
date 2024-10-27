@@ -5,7 +5,7 @@ import com.zex.ecommerce.domain.ordereditens.OrderedItens;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public record DetailsProductOrderDTO(UUID id,
+public record DetailsProductOrderDTO(String id,
                                      String name,
                                      Integer amount,
                                      BigDecimal unitaryValue

@@ -47,7 +47,7 @@ public class ProductController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable UUID id) {
+    public ResponseEntity delete(@PathVariable String id) {
         this.service.delete(id);
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
@@ -55,7 +55,7 @@ public class ProductController {
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<DetailsProductDTO> details(@PathVariable UUID id) {
+    public ResponseEntity<DetailsProductDTO> details(@PathVariable String id) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.details(id));
     }
 

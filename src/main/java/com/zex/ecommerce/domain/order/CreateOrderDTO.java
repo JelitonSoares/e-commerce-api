@@ -9,7 +9,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 public record CreateOrderDTO(@NotNull
-                             UUID clientId,
+                             String clientId,
                              @NotNull
                              @Valid
                              List<CreateOrderProductDTO> products) {

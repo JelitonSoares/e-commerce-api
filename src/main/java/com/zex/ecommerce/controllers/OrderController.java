@@ -48,14 +48,14 @@ public class OrderController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable UUID id) {
+    public ResponseEntity delete(@PathVariable String id) {
         this.service.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<DetailsOrderDTO> details(@PathVariable UUID id) {
+    public ResponseEntity<DetailsOrderDTO> details(@PathVariable String id) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.details(id));
     }
 }

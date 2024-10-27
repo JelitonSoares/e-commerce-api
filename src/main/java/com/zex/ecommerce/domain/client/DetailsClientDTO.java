@@ -2,7 +2,7 @@ package com.zex.ecommerce.domain.client;
 
 import java.util.UUID;
 
-public record DetailsClientDTO(UUID id,
+public record DetailsClientDTO(String id,
                                String name,
                                String document,
                                DetailsAddressDTO address

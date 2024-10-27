@@ -42,20 +42,20 @@ public class ProductService {
     }
 
     @Transactional
-    public void delete(UUID id) {
+    public void delete(String id) {
         Product product = this.repository.getReferenceById(id);
 
         this.repository.delete(product);
     }
 
 
-    public DetailsProductDTO details(UUID id) {
+    public DetailsProductDTO details(String id) {
         Product product = this.getReferenceByID(id);
 
         return new DetailsProductDTO(product);
     }
 
-    public Product getReferenceByID(UUID id) {
+    public Product getReferenceByID(String id) {
         return this.repository.getReferenceById(id);
     }
 }

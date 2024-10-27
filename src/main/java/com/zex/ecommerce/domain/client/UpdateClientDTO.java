@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 
-public record UpdateClientDTO(@NotNull UUID id,
+public record UpdateClientDTO(@NotNull String id,
                               String name,
                               @Valid
                               UpdateAddressDTO address

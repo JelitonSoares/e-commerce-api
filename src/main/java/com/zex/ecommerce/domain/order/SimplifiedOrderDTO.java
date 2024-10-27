@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
-public record SimplifiedOrderDTO(UUID orderId,
+public record SimplifiedOrderDTO(String orderId,
                                  String clientName,
                                  LocalDate orderDate,
                                  BigDecimal totalValue) {

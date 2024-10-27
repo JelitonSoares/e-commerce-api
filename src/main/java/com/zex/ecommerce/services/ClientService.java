@@ -41,18 +41,18 @@ public class ClientService {
     }
 
     @Transactional
-    public void delete(UUID id) {
+    public void delete(String id) {
         Client client = this.repository.getReferenceById(id);
 
         this.repository.delete(client);
     }
 
-    public Client getReferenceByID(UUID id) {
+    public Client getReferenceByID(String id) {
         return this.repository.getReferenceById(id);
     }
 
 
-    public DetailsClientDTO details(UUID id) {
+    public DetailsClientDTO details(String id) {
         Client client = this.getReferenceByID(id);
 
         return new DetailsClientDTO(client);

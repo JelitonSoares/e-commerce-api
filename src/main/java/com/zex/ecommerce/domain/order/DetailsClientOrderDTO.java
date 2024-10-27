@@ -4,7 +4,7 @@ import com.zex.ecommerce.domain.client.Client;
 
 import java.util.UUID;
 
-public record DetailsClientOrderDTO(UUID id,
+public record DetailsClientOrderDTO(String id,
                                     String name,
                                     String document) {
 

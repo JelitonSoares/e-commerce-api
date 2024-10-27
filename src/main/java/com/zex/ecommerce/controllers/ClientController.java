@@ -52,7 +52,7 @@ public class ClientController {
 
     @DeleteMapping("{id}")
     @Operation(summary = "Delete a client")
-    public ResponseEntity delete(@PathVariable UUID id) {
+    public ResponseEntity delete(@PathVariable String id) {
         this.service.delete(id);
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
@@ -61,7 +61,7 @@ public class ClientController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Detail a client by ID")
-    public ResponseEntity<DetailsClientDTO> details(@PathVariable UUID id) {
+    public ResponseEntity<DetailsClientDTO> details(@PathVariable String id) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.details(id));
     }
 }

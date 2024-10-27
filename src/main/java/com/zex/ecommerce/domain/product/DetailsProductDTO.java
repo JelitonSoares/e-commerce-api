@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
-public record DetailsProductDTO(UUID id,
+public record DetailsProductDTO(String id,
                                 String name,
                                 String description,
                                 BigDecimal value,

@@ -2,7 +2,7 @@ package com.zex.ecommerce.domain.product;
 
 import java.util.UUID;
 
-public record SimplifiedProductDTO(UUID id,
+public record SimplifiedProductDTO(String id,
                                    String name,
                                    String description) {
 

@@ -71,14 +71,14 @@ public class OrderService {
     }
 
     @Transactional
-    public void delete(UUID id){
+    public void delete(String id){
         Order reference = this.repository.getReferenceById(id);
 
 
         this.repository.delete(reference);
     }
 
-    public DetailsOrderDTO details(UUID id) {
+    public DetailsOrderDTO details(String id) {
         Order reference = this.repository.getReferenceById(id);
 
         return new DetailsOrderDTO(reference);

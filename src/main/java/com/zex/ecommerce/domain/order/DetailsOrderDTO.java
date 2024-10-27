@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public record DetailsOrderDTO(UUID id,
+public record DetailsOrderDTO(String id,
                               DetailsClientOrderDTO client,
                               LocalDate orderDate,
                               BigDecimal totalValue,
