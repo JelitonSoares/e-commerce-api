@@ -5,6 +5,7 @@ import com.zex.ecommerce.domain.product.DetailsProductDTO;
 import com.zex.ecommerce.domain.product.SimplifiedProductDTO;
 import com.zex.ecommerce.domain.product.UpdateProductDTO;
 import com.zex.ecommerce.services.ProductService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -25,6 +26,7 @@ public class ProductController {
     private ProductService service;
 
     @PostMapping
+    @Operation(summary = "Create a product")
     public ResponseEntity<DetailsProductDTO> create(@RequestBody @Valid CreateProductDTO data, UriComponentsBuilder componentsBuilder) {
         DetailsProductDTO dto = this.service.create(data);
 
@@ -36,17 +38,20 @@ public class ProductController {
 
 
     @GetMapping
+    @Operation(summary = "List all products")
     public ResponseEntity<PagedModel<SimplifiedProductDTO>> getAll(@PageableDefault(size = 10, sort = {"category"}) Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(new PagedModel(this.service.getAll(pageable)));
     }
 
     @PutMapping
+    @Operation(summary = "Updates a product by ID")
     public ResponseEntity<DetailsProductDTO> update(@RequestBody @Valid UpdateProductDTO data) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.update(data));
     }
 
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete a product by ID")
     public ResponseEntity delete(@PathVariable String id) {
         this.service.delete(id);
 
@@ -55,6 +60,7 @@ public class ProductController {
 
 
     @GetMapping("/{id}")
+    @Operation(summary = "Details a product by ID")
     public ResponseEntity<DetailsProductDTO> details(@PathVariable String id) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.details(id));
     }
