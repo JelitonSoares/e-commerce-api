@@ -4,6 +4,7 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -22,6 +23,10 @@ public class SpringDocConfiguration {
                                 .email("jelitonn.soarres@gmail.com"))
                         .license(new License()
                                 .name("MIT License")
-                                .url("http://ecommerce/api/license")));
+                                .url("http://ecommerce/api/license")))
+                .addServersItem(new Server()
+                        .url("https://e-commerce-api-production-3c7f.up.railway.app"))
+                .addServersItem((new Server()
+                        .url("http://localhost:8080")));
     }
 }
