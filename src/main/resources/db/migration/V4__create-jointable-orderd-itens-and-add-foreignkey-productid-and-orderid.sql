@@ -1,7 +1,7 @@
 CREATE TABLE ordered_itens (
-id BINARY(16) NOT NULL,
-order_id BINARY(16) NOT NULL,
-product_id BINARY(16) NOT NULL,
+id VARCHAR(36) NOT NULL,
+order_id VARCHAR(36) NOT NULL,
+product_id VARCHAR(36) NOT NULL,
 amount BIGINT NOT NULL,
 unitary_value DECIMAL(10,2) NOT NULL,
 PRIMARY KEY (id),

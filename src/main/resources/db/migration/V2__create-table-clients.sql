@@ -1,5 +1,5 @@
 CREATE TABLE clients (
-id BINARY(16) NOT NULL,
+id VARCHAR(36) NOT NULL,
 client_name VARCHAR(50) NOT NULL,
 client_document VARCHAR(11) NOT NULL,
 client_public_place VARCHAR(255) NOT NULL,

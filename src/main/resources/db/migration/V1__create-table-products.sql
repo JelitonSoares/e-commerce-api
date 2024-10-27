@@ -1,5 +1,5 @@
 CREATE TABLE products (
-id BINARY(16) NOT NULL,
+id VARCHAR(36) NOT NULL,
 product_name VARCHAR(255) NOT NULL,
 product_description VARCHAR(255) NOT NULL,
 product_value DECIMAL(10,2) NOT NULL,
