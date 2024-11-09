@@ -67,4 +67,11 @@ public class ProductController {
 
 
 
+    @GetMapping("/query/{name}")
+    public ResponseEntity<PagedModel<SimplifiedProductDTO>> findByName(@PathVariable String name, Pageable pageable){
+        return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.findByName(name, pageable)));
+    }
+
+
+
 }
