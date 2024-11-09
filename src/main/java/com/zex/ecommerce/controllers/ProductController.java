@@ -1,13 +1,12 @@
 package com.zex.ecommerce.controllers;
 
-import com.zex.ecommerce.domain.product.CreateProductDTO;
-import com.zex.ecommerce.domain.product.DetailsProductDTO;
-import com.zex.ecommerce.domain.product.SimplifiedProductDTO;
-import com.zex.ecommerce.domain.product.UpdateProductDTO;
+import com.zex.ecommerce.domain.product.*;
 import com.zex.ecommerce.services.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedModel;
@@ -67,10 +66,21 @@ public class ProductController {
 
 
 
-    @GetMapping("/query/{name}")
+    @GetMapping("/name/{name}")
     public ResponseEntity<PagedModel<SimplifiedProductDTO>> findByName(@PathVariable String name, Pageable pageable){
         return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.findByName(name, pageable)));
     }
+
+
+
+    @GetMapping("/category/{category}")
+    public ResponseEntity<PagedModel<SimplifiedProductDTO>> findByCategory(@PathVariable  Category category, Pageable pageable) {
+        return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.findByCategory(category, pageable)));
+    }
+
+
+
+
 
 
 
