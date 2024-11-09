@@ -58,4 +58,12 @@ public class ProductService {
     public Product getReferenceByID(String id) {
         return this.repository.getReferenceById(id);
     }
+
+
+    public Page<SimplifiedProductDTO> findByName(String name, Pageable pageable) {
+
+
+        return this.repository.findByNameContainingIgnoreCaseOrderByValue(name, pageable)
+                .map(p -> new SimplifiedProductDTO(p));
+    }
 }
