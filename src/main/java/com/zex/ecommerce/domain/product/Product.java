@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
-@Entity(name = "product")
+@Entity(name = "Product")
 @Table(name = "products")
 @Getter
 @Setter
