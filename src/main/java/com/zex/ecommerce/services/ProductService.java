@@ -66,4 +66,10 @@ public class ProductService {
         return this.repository.findByNameContainingIgnoreCaseOrderByValue(name, pageable)
                 .map(p -> new SimplifiedProductDTO(p));
     }
+
+
+    public Page<SimplifiedProductDTO> findByCategory(Category category, Pageable pageable) {
+        return this.repository.findByCategoryOrderByValue(category, pageable)
+                .map(p -> new SimplifiedProductDTO(p));
+    }
 }
