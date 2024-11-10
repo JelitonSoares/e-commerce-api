@@ -71,4 +71,11 @@ public class ClientController {
     public ResponseEntity<PagedModel<SimplifiedClientDTO>> findByName(@PathVariable String name, Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.findClientByName(name, pageable)));
     }
+
+    @GetMapping("/document/{document}")
+    @Operation(summary = "FInd a client by document")
+    public ResponseEntity<SimplifiedClientDTO> findByDocument(@PathVariable String document) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.service.finByDocument(document));
+    }
+
 }
