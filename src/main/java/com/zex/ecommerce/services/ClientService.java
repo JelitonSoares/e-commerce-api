@@ -60,7 +60,7 @@ public class ClientService {
 
 
     public Page<SimplifiedClientDTO> findClientByName(String name, Pageable pageable) {
-        return this.repository.findByName(name, pageable)
+        return this.repository.findByNameContainingIgnoreCase(name, pageable)
                 .map(c -> new SimplifiedClientDTO(c));
     }
 
