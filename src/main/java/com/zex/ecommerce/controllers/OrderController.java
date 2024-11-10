@@ -64,4 +64,11 @@ public class OrderController {
     public ResponseEntity<DetailsOrderDTO> details(@PathVariable String id) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.details(id));
     }
+
+
+    @GetMapping("/client/{clientID}")
+    @Operation(summary = "Find a order by client")
+    public ResponseEntity<PagedModel<DetailsOrderDTO>> findByClient(@PathVariable String clientID, Pageable pageable) {
+        return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.findByClient(clientID, pageable)));
+    }
 }
