@@ -58,4 +58,10 @@ public class ClientService {
         return new DetailsClientDTO(client);
     }
 
+
+    public Page<SimplifiedClientDTO> findClientByName(String name, Pageable pageable) {
+        return this.repository.findByName(name, pageable)
+                .map(c -> new SimplifiedClientDTO(c));
+    }
+
 }
