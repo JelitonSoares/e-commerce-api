@@ -83,4 +83,11 @@ public class OrderService {
 
         return new DetailsOrderDTO(reference);
     }
+
+    public Page<DetailsOrderDTO> findByClient(String id, Pageable pageable) {
+        Client client = clientService.getReferenceByID(id);
+
+        return this.repository.findByClientOrderByOrderDateDesc(client, pageable)
+                .map(o -> new DetailsOrderDTO(o));
+    }
 }
