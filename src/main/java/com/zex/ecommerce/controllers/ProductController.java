@@ -74,11 +74,11 @@ public class ProductController {
 
 
 
-    @GetMapping("/category/{categoryString}")
+    @GetMapping("/category/{category}")
     @Operation(summary = "Find a product by category")
-    public ResponseEntity<PagedModel<SimplifiedProductDTO>> findByCategory(@PathVariable  String categoryString, Pageable pageable) {
-        Category category = Category.valueOf(categoryString.toUpperCase());
-        return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.findByCategory(category, pageable)));
+    public ResponseEntity<PagedModel<SimplifiedProductDTO>> findByCategory(@PathVariable  String category, Pageable pageable) {
+        Category productCategory = Category.valueOf(category.toUpperCase());
+        return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.findByCategory(productCategory, pageable)));
     }
 
 
