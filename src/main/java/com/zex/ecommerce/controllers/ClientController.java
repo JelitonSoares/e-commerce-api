@@ -64,4 +64,11 @@ public class ClientController {
     public ResponseEntity<DetailsClientDTO> details(@PathVariable String id) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.details(id));
     }
+
+
+    @GetMapping("/{name}")
+    @Operation(summary = "Find a client by name")
+    public ResponseEntity<PagedModel<SimplifiedClientDTO>> findByName(@PathVariable String name, Pageable pageable) {
+        return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.findClientByName(name, pageable)));
+    }
 }
