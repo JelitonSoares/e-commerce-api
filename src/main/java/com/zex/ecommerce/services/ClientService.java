@@ -64,4 +64,9 @@ public class ClientService {
                 .map(c -> new SimplifiedClientDTO(c));
     }
 
+
+    public SimplifiedClientDTO finByDocument(String document) {
+        return new SimplifiedClientDTO(this.repository.findByDocument(document));
+    }
+
 }
