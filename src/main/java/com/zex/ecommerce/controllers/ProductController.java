@@ -73,8 +73,9 @@ public class ProductController {
 
 
 
-    @GetMapping("/category/{category}")
-    public ResponseEntity<PagedModel<SimplifiedProductDTO>> findByCategory(@PathVariable  Category category, Pageable pageable) {
+    @GetMapping("/category/{categoryString}")
+    public ResponseEntity<PagedModel<SimplifiedProductDTO>> findByCategory(@PathVariable  String categoryString, Pageable pageable) {
+        Category category = Category.valueOf(categoryString.toUpperCase());
         return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.findByCategory(category, pageable)));
     }
 
