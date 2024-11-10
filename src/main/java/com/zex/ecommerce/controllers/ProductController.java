@@ -67,6 +67,7 @@ public class ProductController {
 
 
     @GetMapping("/name/{name}")
+    @Operation(summary = "Find a product by name")
     public ResponseEntity<PagedModel<SimplifiedProductDTO>> findByName(@PathVariable String name, Pageable pageable){
         return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.findByName(name, pageable)));
     }
@@ -74,6 +75,7 @@ public class ProductController {
 
 
     @GetMapping("/category/{categoryString}")
+    @Operation(summary = "Find a product by category")
     public ResponseEntity<PagedModel<SimplifiedProductDTO>> findByCategory(@PathVariable  String categoryString, Pageable pageable) {
         Category category = Category.valueOf(categoryString.toUpperCase());
         return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.findByCategory(category, pageable)));
