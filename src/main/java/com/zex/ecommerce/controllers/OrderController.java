@@ -1,5 +1,6 @@
 package com.zex.ecommerce.controllers;
 
+import com.zex.ecommerce.domain.client.query.Top5Clients;
 import com.zex.ecommerce.domain.order.CreateOrderDTO;
 import com.zex.ecommerce.domain.order.DetailsOrderDTO;
 import com.zex.ecommerce.domain.order.SimplifiedOrderDTO;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -70,5 +72,12 @@ public class OrderController {
     @Operation(summary = "Find a order by client")
     public ResponseEntity<PagedModel<DetailsOrderDTO>> findByClient(@PathVariable String clientID, Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.findByClient(clientID, pageable)));
+    }
+
+
+    @GetMapping("/top5clients")
+    @Operation(summary = "Find the top five clients with more orders")
+    public ResponseEntity<PagedModel<Top5Clients>> getTop5Clients(@PageableDefault(size = 5)   Pageable pageable) {
+        return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.getTop5Clients(pageable)));
     }
 }
