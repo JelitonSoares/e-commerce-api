@@ -80,7 +80,7 @@ public class ProductController {
     }
 
 
-    @GetMapping("/bestsellers")
+    @GetMapping("/best-sellers")
     @Operation(summary = "Find the best-sellers products")
     public ResponseEntity<PagedModel<BestSellingProduct>> getBestSellers(Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.getBestSellingProducts(pageable)));
