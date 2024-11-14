@@ -1,6 +1,7 @@
 package com.zex.ecommerce.controllers;
 
 import com.zex.ecommerce.domain.client.query.Top5Clients;
+import com.zex.ecommerce.domain.client.query.TotalAmountSpentByClients;
 import com.zex.ecommerce.domain.order.CreateOrderDTO;
 import com.zex.ecommerce.domain.order.DetailsOrderDTO;
 import com.zex.ecommerce.domain.order.SimplifiedOrderDTO;
@@ -75,9 +76,15 @@ public class OrderController {
     }
 
 
-    @GetMapping("/top5clients")
+    @GetMapping("/topClients")
     @Operation(summary = "Find the top five clients with more orders")
     public ResponseEntity<PagedModel<Top5Clients>> getTop5Clients(@PageableDefault(size = 5)   Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.getTop5Clients(pageable)));
+    }
+
+    @GetMapping("/totalSpent")
+    @Operation(summary = "Returns the total spent by clients")
+    public ResponseEntity<PagedModel<TotalAmountSpentByClients>> getTotalSpent(Pageable pageable) {
+        return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.getTotalAmountSpentByClients(pageable)));
     }
 }

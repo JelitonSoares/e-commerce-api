@@ -2,6 +2,7 @@ package com.zex.ecommerce.services;
 
 import com.zex.ecommerce.domain.client.Client;
 import com.zex.ecommerce.domain.client.query.Top5Clients;
+import com.zex.ecommerce.domain.client.query.TotalAmountSpentByClients;
 import com.zex.ecommerce.domain.order.*;
 import com.zex.ecommerce.domain.ordereditens.OrderedItens;
 import com.zex.ecommerce.repositories.OrderRepository;
@@ -94,5 +95,10 @@ public class OrderService {
 
     public Page<Top5Clients> getTop5Clients(Pageable pageable) {
         return this.repository.getTop5Clients(pageable);
+    }
+
+
+    public Page<TotalAmountSpentByClients> getTotalAmountSpentByClients(Pageable pageable) {
+        return this.repository.getTotalAmountSpent(pageable);
     }
 }
