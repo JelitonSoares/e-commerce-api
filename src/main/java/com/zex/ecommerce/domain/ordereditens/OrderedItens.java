@@ -11,7 +11,7 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-@Entity(name = "ordered_itens")
+@Entity(name = "OrderedItems")
 @Table(name = "ordered_itens")
 @Getter
 @Setter
