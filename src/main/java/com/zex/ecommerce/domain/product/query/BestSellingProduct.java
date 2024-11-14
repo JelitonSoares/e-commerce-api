@@ -1,4 +1,4 @@
-package com.zex.ecommerce.domain.product;
+package com.zex.ecommerce.domain.product.query;
 
 public interface  BestSellingProduct {
 

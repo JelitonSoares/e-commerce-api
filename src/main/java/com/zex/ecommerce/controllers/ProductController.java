@@ -1,12 +1,11 @@
 package com.zex.ecommerce.controllers;
 
 import com.zex.ecommerce.domain.product.*;
+import com.zex.ecommerce.domain.product.query.BestSellingProduct;
 import com.zex.ecommerce.services.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.data.web.PagedModel;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/ecommerce/products")
@@ -83,6 +81,7 @@ public class ProductController {
 
 
     @GetMapping("/bestsellers")
+    @Operation(summary = "Find the best-sellers products")
     public ResponseEntity<PagedModel<BestSellingProduct>> getBestSellers(Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.getBestSellingProducts(pageable)));
     }

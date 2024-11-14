@@ -1,6 +1,7 @@
 package com.zex.ecommerce.services;
 
 import com.zex.ecommerce.domain.product.*;
+import com.zex.ecommerce.domain.product.query.BestSellingProduct;
 import com.zex.ecommerce.repositories.OrderedItemRepository;
 import com.zex.ecommerce.repositories.ProductRepository;
 import jakarta.transaction.Transactional;

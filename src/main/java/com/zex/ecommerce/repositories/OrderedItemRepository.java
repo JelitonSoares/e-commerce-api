@@ -1,7 +1,7 @@
 package com.zex.ecommerce.repositories;
 
 import com.zex.ecommerce.domain.ordereditens.OrderedItens;
-import com.zex.ecommerce.domain.product.BestSellingProduct;
+import com.zex.ecommerce.domain.product.query.BestSellingProduct;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
