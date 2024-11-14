@@ -1,15 +1,25 @@
 package com.zex.ecommerce.repositories;
 
 import com.zex.ecommerce.domain.client.Client;
+import com.zex.ecommerce.domain.client.query.Top5Clients;
 import com.zex.ecommerce.domain.order.Order;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.UUID;
+import org.springframework.data.jpa.repository.Query;
 
 public interface OrderRepository extends JpaRepository<Order, String> {
 
 
     Page<Order> findByClientOrderByOrderDateDesc(Client client, Pageable pageable);
+
+
+    @Query(value = """
+            SELECT c.client_name AS client_name, COUNT(o.client_ID) AS quantity_of_orders
+            FROM orders o
+            JOIN clients c ON o.client_id = c.id
+            GROUP BY c.client_name
+            ORDER BY quantity_of_orders DESC;
+            """, nativeQuery = true)
+    Page<Top5Clients> getTop5Clients(Pageable pageable);
 }
