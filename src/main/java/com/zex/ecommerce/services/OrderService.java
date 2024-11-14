@@ -1,7 +1,8 @@
 package com.zex.ecommerce.services;
 
-import com.zex.ecommerce.domain.order.*;
 import com.zex.ecommerce.domain.client.Client;
+import com.zex.ecommerce.domain.client.query.Top5Clients;
+import com.zex.ecommerce.domain.order.*;
 import com.zex.ecommerce.domain.ordereditens.OrderedItens;
 import com.zex.ecommerce.repositories.OrderRepository;
 import jakarta.transaction.Transactional;
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -89,5 +89,10 @@ public class OrderService {
 
         return this.repository.findByClientOrderByOrderDateDesc(client, pageable)
                 .map(o -> new DetailsOrderDTO(o));
+    }
+
+
+    public Page<Top5Clients> getTop5Clients(Pageable pageable) {
+        return this.repository.getTop5Clients(pageable);
     }
 }
