@@ -76,13 +76,13 @@ public class OrderController {
     }
 
 
-    @GetMapping("/topClients")
+    @GetMapping("/clients/best-buyers")
     @Operation(summary = "Find the top five clients with more orders")
     public ResponseEntity<PagedModel<Top5Clients>> getTop5Clients(@PageableDefault(size = 5)   Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.getTop5Clients(pageable)));
     }
 
-    @GetMapping("/totalSpent")
+    @GetMapping("clients/total-spent")
     @Operation(summary = "Returns the total spent by clients")
     public ResponseEntity<PagedModel<TotalAmountSpentByClients>> getTotalSpent(Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(new PagedModel<>(this.service.getTotalAmountSpentByClients(pageable)));
